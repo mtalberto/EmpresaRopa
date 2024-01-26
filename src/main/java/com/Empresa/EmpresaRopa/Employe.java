@@ -1,4 +1,4 @@
-package models;
+package com.Empresa.EmpresaRopa;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,16 +18,21 @@ public class Employe {
     private long id;
 
     @NonNull
-    private String PrimerApellido;
+    @Column(nullable=false)
+    private String primerApellido;
 
     @NonNull
-    private String SegundoApellido;
+    @Column(nullable=false)
+    private String segundoApellido;
 
     @NonNull
+    @Column(nullable=false)
     private String nombre;
     @NonNull
+    @Column(nullable=false)
     private String email;
     @NonNull
+    @Column(nullable=false)
     private String fechaContratado;
 
     private String fechaDespido;

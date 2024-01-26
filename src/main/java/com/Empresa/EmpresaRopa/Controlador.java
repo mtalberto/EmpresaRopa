@@ -1,4 +1,4 @@
-package models;
+package com.Empresa.EmpresaRopa;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +16,16 @@ public class Controlador {
     }
 
 
-    @GetMapping("/Empleados")
-    public Iterable<Employe> findAllEmploye() {
+    @GetMapping("/empleados")
+    public Iterable<Employe> findAllEmploye()
+    {
+
         return this.operacionBuscarEmpleados.findAll();
     }
 
-    @PostMapping("/Empleados")
-    public Employe addOneEmploye(@RequestBody Employe employee) {
+    @PostMapping("/empleados")
+    public Employe addOneEmploye(@RequestBody Employe employee)
+    {
         return this.operacionBuscarEmpleados.save(employee);
     }
 }
