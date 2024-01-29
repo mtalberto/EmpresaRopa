@@ -1,6 +1,7 @@
 package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -31,13 +32,16 @@ public class Employe {
     @NonNull
     @Column(nullable = false)
     private String nombre;
+    @Email
     @NonNull
     @Column(nullable = false)
     private String email;
+
     @NonNull
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaContratado;
-
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaDespido;
 
     @OneToMany(mappedBy = "empleado")

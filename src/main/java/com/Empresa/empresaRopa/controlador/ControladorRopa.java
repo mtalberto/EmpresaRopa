@@ -20,12 +20,12 @@ public class ControladorRopa {
 
 
     @GetMapping("/falda")
-    public Iterable<Ropa> findAllEmploye() {
+    public Iterable<Ropa> findAllFaldas() {
 
         return this.repositoryBuscarRopa.findAll();
     }
 
-    @PostMapping("/Ropa")
+    @PostMapping("/falda")
     public Ropa addOneRopa(@RequestBody Ropa ropa) {
         
         return this.repositoryBuscarRopa.save(ropa);

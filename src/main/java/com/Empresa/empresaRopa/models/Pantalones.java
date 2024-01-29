@@ -1,7 +1,6 @@
 package com.Empresa.empresaRopa.models;
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -15,6 +14,5 @@ public class Pantalones extends Ropa{
 
 
     @NonNull
-    @Column(nullable = false)
-    private String tipo;
+    private String diseño;
 }

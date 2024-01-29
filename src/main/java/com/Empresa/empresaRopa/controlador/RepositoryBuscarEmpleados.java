@@ -10,6 +10,6 @@ import java.util.List;
 public interface RepositoryBuscarEmpleados extends JpaRepository<Employe, Long> {
 
     List<Employe> findBySegundoApellido(String segundoApellido);
-
+    List<Employe> findByPrimerApellido(String primerApellido);
 
 }

@@ -3,6 +3,7 @@ package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.sql.Timestamp;
 
 
@@ -26,8 +27,9 @@ public class Ventas {
     @ManyToOne
     @JoinColumn(name = "id_ropa", nullable = false) // Permite valores nulos
 
-    private Ropa ropa;
+
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaVenta;
 }

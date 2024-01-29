@@ -24,13 +24,17 @@ public class Ropa {
     private String color;
 
     @NonNull
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fCompraAlmacen;
-
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fVenta;
-    @NonNull
+
     private long idempleado_venta;
     @NonNull
     private String marca;
+
+    @NonNull
+    private String tipo;
     //podria pasar el atributo tipo aqui pero es para practicar
      /* sera en el controlador
     @DateTimeFormat se usa en la capa de presentación para controlar

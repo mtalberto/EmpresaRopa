@@ -10,11 +10,16 @@ import lombok.*;
 @Getter
 @Setter
 public class Camisetas extends Ropa {
-
+    @NonNull
     private String tela;
+    @NonNull
     private String bolsillo;
-
+    @NonNull
     private String cuello;
-
+    @NonNull
     private String botones;
+
+    @NonNull
+
+    private String diseño;
 }

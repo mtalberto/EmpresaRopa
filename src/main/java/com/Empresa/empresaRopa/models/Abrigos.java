@@ -1,8 +1,6 @@
-package com.Eempresa.empresaRopa.models;
+package com.Empresa.empresaRopa.models;
 
 
-import com.Empresa.empresaRopa.models.Ropa;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.NonNull;
@@ -15,11 +13,12 @@ import lombok.*;
 public class Abrigos extends Ropa {
 
     @NonNull
-    @Column(nullable = false)
     private String tela;
 
     @NonNull
-    @Column(nullable = false)
     private String largo;
+    @NonNull
+
+    private String diseño;
 
 }
