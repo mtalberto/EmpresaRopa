@@ -18,8 +18,8 @@ import java.util.List;
 public class Employe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id_empleado;
 
     @NonNull
     @Column(nullable = false)

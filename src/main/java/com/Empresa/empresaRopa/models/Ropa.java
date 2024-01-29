@@ -10,10 +10,11 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Ropa {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id_ropa;
 
     @NonNull
     @Column(nullable = false)
@@ -26,8 +27,6 @@ public class Ropa {
     @NonNull
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fCompraAlmacen;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp fVenta;
 
     private long idempleado_venta;
     @NonNull

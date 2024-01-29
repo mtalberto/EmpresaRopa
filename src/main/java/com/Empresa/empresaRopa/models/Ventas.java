@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 
 public class Ventas {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
@@ -26,10 +26,25 @@ public class Ventas {
 
     @ManyToOne
     @JoinColumn(name = "id_ropa", nullable = false) // Permite valores nulos
+    private Pantalones pantalones;
 
-
-
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @NonNull
+    @Column(name = "fechaventa", nullable = false)
     private Timestamp fechaVenta;
+
+    @ManyToOne
+    @JoinColumn(name = "id_falda", nullable = true)//pongo true porque solo añadira una prenda cada vez
+    private Faldas falda;
+
+    @ManyToOne
+    @JoinColumn(name = "id_abrigo", nullable = true)
+    private Abrigos abrigo;
+
+    @ManyToOne
+    @JoinColumn(name = "id_camisetas", nullable = true)
+    private Camisetas camiseta;
+
+    @ManyToOne
+    @JoinColumn(name = "id_ropainterior", nullable = true)
+    private RopaInterior ropaInterior;
 }
