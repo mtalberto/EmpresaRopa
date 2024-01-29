@@ -20,14 +20,14 @@ public class Ventas {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_empleado", nullable = true)
+    @JoinColumn(name = "id_empleado", nullable = false)
     private Employe empleado;
 
     @ManyToOne
-    @JoinColumn(name = "id_ropa", nullable = true) // Permite valores nulos
+    @JoinColumn(name = "id_ropa", nullable = false) // Permite valores nulos
 
     private Ropa ropa;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Timestamp fechaVenta;
 }
