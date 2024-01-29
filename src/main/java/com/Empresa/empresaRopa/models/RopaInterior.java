@@ -1,22 +1,21 @@
-package com.Empresa.EmpresaRopa.models;
+package com.Empresa.empresaRopa.models;
 
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.NonNull;
+import lombok.Getter;
 import lombok.*;
 
 @Entity
-@Table(name = "Faldas")
+@Table(name = "RopaInterior")
 @Getter
 @Setter
-public class Faldas extends Ropa{
+public class RopaInterior extends Ropa{
 
 
-    @NonNull
-    @Column(nullable = false)
-    private String tela;
+    //calconcillos o bragas .. etc
+
     @NonNull
     @Column(nullable = false)
     private String tipo;

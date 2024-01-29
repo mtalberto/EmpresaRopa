@@ -1,4 +1,4 @@
-package com.Empresa.EmpresaRopa.models;
+package com.Empresa.empresaRopa.models;
 
 
 import jakarta.persistence.Entity;

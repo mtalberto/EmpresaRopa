@@ -1,7 +1,6 @@
-package com.Empresa.EmpresaRopa.controlador;
+package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.EmpresaRopa.models.Employe;
-import lombok.AllArgsConstructor;
+import com.Empresa.empresaRopa.models.Employe;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,11 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@AllArgsConstructor
+
 public class ControladorEmpleados {
 
     private final RepositoryBuscarEmpleados repositoryBuscarEmpleados;
 
+    public ControladorEmpleados(RepositoryBuscarEmpleados repositoryBuscarEmpleados) {
+        this.repositoryBuscarEmpleados = repositoryBuscarEmpleados;
+    }
 
 
     @GetMapping("/empleados")

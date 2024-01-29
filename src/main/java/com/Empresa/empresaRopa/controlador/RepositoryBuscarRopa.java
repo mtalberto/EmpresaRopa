@@ -1,7 +1,7 @@
-package com.Empresa.EmpresaRopa.controlador;
+package com.Empresa.empresaRopa.controlador;
 
 
-import com.Empresa.EmpresaRopa.models.Ropa;
+import com.Empresa.empresaRopa.models.Ropa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

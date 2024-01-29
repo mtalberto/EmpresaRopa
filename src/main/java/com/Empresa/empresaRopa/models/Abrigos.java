@@ -1,6 +1,7 @@
-package com.Empresa.EmpresaRopa.models;
+package com.Eempresa.empresaRopa.models;
 
 
+import com.Empresa.empresaRopa.models.Ropa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

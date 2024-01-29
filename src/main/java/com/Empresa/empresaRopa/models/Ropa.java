@@ -1,4 +1,4 @@
-package com.Empresa.EmpresaRopa.models;
+package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,8 +27,10 @@ public class Ropa {
     private Timestamp fCompraAlmacen;
 
     private Timestamp fVenta;
-
+    @NonNull
     private long idempleado_venta;
+    @NonNull
+    private String marca;
     //podria pasar el atributo tipo aqui pero es para practicar
      /* sera en el controlador
     @DateTimeFormat se usa en la capa de presentación para controlar
