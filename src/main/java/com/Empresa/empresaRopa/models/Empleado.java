@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 
 @Entity
@@ -33,8 +32,9 @@ public class Empleado {
     @NonNull
     @Column(nullable = false)
     private String nombre;
-    @Email
+
     @NonNull
+    @Email
     @Column(nullable = false)
     private String email;
 
