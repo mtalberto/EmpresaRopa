@@ -2,6 +2,7 @@ package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.sql.Timestamp;
 
 @MappedSuperclass

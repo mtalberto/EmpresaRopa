@@ -3,8 +3,8 @@ package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Getter;
 import lombok.*;
+
 
 @Entity
 @Table(name = "RopaInterior")
@@ -17,7 +17,7 @@ public class RopaInterior extends Ropa{
 
     @NonNull
 
-    private String diseño;
+    private String desing;
 
 
 }

@@ -3,8 +3,8 @@ package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.NonNull;
 import lombok.*;
+
 
 @Entity
 @Table(name = "Faldas")
