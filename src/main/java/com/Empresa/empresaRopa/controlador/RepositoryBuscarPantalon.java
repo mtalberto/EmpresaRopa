@@ -1,6 +1,6 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.Falda;
+
 import com.Empresa.empresaRopa.models.Pantalon;
 import org.springframework.data.jpa.repository.JpaRepository;
 

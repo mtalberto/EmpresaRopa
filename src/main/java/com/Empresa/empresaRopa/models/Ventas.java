@@ -3,6 +3,7 @@ package com.Empresa.empresaRopa.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -21,11 +22,14 @@ public class Ventas {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_empleado", nullable = true)
+    @JoinColumn(name = "Empleado", nullable = true)
     private Empleado empleado;
 
+    @Column(name = "Prenda", nullable =  false)
+    private String prenda;
+
     @ManyToOne
-    @JoinColumn(name = "id_ropa", nullable =  true) // Permite valores nulos
+    @JoinColumn(name = "Pantalon", nullable =  true) // Permite valores nulos
     private Pantalon pantalon;
 
     @NonNull
@@ -34,19 +38,22 @@ public class Ventas {
     private Timestamp fechaVenta;
 
     @ManyToOne
-    @JoinColumn(name = "id_falda", nullable =  true)//pongo true porque solo añadira una prenda cada vez
+    @JoinColumn(name = "falda", nullable =  true)//pongo true porque solo añadira una prenda cada vez
     private Falda falda;
 
     @ManyToOne
-    @JoinColumn(name = "id_abrigo", nullable =  true)
+    @JoinColumn(name = "abrigo", nullable =  true)
     private Abrigo abrigo;
 
     @ManyToOne
-    @JoinColumn(name = "id_camisetas", nullable =  true)
+    @JoinColumn(name = "camiseta", nullable =  true)
     private Camiseta camiseta;
 
     @ManyToOne
-    @JoinColumn(name = "id_ropainterior", nullable =  true)
+    @JoinColumn(name = "ropainterior", nullable =  true)
     private RopaInterior ropaInterior;
 
+
+    @Column(name = "cantidad", nullable =  false)
+    private Integer cantidad;
 }
