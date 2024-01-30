@@ -1,15 +1,16 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.Employe;
+import com.Empresa.empresaRopa.models.Empleado;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface RepositoryBuscarEmpleados extends JpaRepository<Employe, Long> {
+public interface RepositoryBuscarEmpleados extends JpaRepository<Empleado, Long> {
 
-    List<Employe> findBySegundoApellido(String segundoApellido);
-    List<Employe> findByPrimerApellido(String primerApellido);
+    List<Empleado> findBySegundoApellido(String segundoApellido);
+    List<Empleado> findByPrimerApellido(String primerApellido);
 
 }

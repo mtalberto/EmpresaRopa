@@ -17,11 +17,11 @@ public class Ropa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_ropa;
 
-    @NonNull
+
     @Column(nullable = false)
     private String talla;
 
-    @NonNull
+
     @Column(nullable = false)
     private String color;
 
