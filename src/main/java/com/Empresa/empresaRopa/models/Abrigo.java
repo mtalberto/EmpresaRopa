@@ -19,8 +19,6 @@ public class Abrigo extends Ropa {
     @NonNull
     private String largo;
 
-    @NonNull
-    private String desing;
 
 
 }
