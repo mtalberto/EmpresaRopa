@@ -3,13 +3,13 @@ package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "Abrigos")
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 public class Abrigo extends Ropa {
 

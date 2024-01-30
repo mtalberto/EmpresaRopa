@@ -10,6 +10,8 @@ import lombok.*;
 @Table(name = "Camisetas")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Camiseta extends Ropa {
     @NonNull
     private String tela;

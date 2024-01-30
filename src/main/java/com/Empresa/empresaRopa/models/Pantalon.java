@@ -9,6 +9,8 @@ import lombok.*;
 @Table(name = "Pantalones")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Pantalon extends Ropa{
 
 

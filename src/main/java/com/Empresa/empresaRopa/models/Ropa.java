@@ -28,16 +28,13 @@ public class Ropa {
     @NonNull
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fCompraAlmacen;
-
+    @ManyToOne
     private long idempleado_venta;
     @NonNull
     private String marca;
 
     @NonNull
     private String tipo;
-
-    @NonNull
-    private String Marca;
 
     @NonNull
     private String nombre;

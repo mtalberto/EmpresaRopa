@@ -1,13 +1,14 @@
 package com.Empresa.empresaRopa.controlador;
 
 
-import com.Empresa.empresaRopa.models.Ropa;
+import com.Empresa.empresaRopa.models.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface RepositoryBuscarRopa extends JpaRepository<Ropa, Long> {
+public interface RepositoryBuscarFalda extends JpaRepository<Falda, Long>{
+    List<Falda> findByTipo(String tipo);
 
-    List<Ropa> findByRopa(String tipo);
+
 }

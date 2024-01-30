@@ -10,10 +10,12 @@ import lombok.*;
 @Table(name = "RopaInterior")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class RopaInterior extends Ropa{
 
 
-    //calconcillos o bragas .. etc
+
 
     @NonNull
     private String tela;

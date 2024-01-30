@@ -10,6 +10,8 @@ import lombok.*;
 @Table(name = "Faldas")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Falda extends Ropa{
 
 
