@@ -26,7 +26,7 @@ public class Ventas {
 
     @ManyToOne
     @JoinColumn(name = "id_ropa", nullable = false) // Permite valores nulos
-    private Pantalones pantalones;
+    private Pantalon pantalon;
 
     @NonNull
     @Column(name = "fechaventa", nullable = false)
@@ -34,15 +34,15 @@ public class Ventas {
 
     @ManyToOne
     @JoinColumn(name = "id_falda", nullable = true)//pongo true porque solo añadira una prenda cada vez
-    private Faldas falda;
+    private Falda falda;
 
     @ManyToOne
     @JoinColumn(name = "id_abrigo", nullable = true)
-    private Abrigos abrigo;
+    private Abrigo abrigo;
 
     @ManyToOne
     @JoinColumn(name = "id_camisetas", nullable = true)
-    private Camisetas camiseta;
+    private Camiseta camiseta;
 
     @ManyToOne
     @JoinColumn(name = "id_ropainterior", nullable = true)

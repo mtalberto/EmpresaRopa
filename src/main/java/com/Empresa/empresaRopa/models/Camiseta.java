@@ -10,7 +10,7 @@ import lombok.*;
 @Table(name = "Camisetas")
 @Getter
 @Setter
-public class Camisetas extends Ropa {
+public class Camiseta extends Ropa {
     @NonNull
     private String tela;
     @NonNull
@@ -19,6 +19,7 @@ public class Camisetas extends Ropa {
     private String cuello;
     @NonNull
     private String botones;
+
 
 
 }
