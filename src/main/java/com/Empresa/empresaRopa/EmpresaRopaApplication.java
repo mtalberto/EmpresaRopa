@@ -13,7 +13,7 @@ public class EmpresaRopaApplication {
 
 		SpringApplication.run(EmpresaRopaApplication.class, args);
 
-        System.out.println("Conexion hecha");
+        System.out.println("Creacion de tablas y conexion satisfactoria");
 
 	}
 
