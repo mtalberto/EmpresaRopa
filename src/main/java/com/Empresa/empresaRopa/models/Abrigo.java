@@ -16,6 +16,8 @@ public class Abrigo extends Ropa {
     @NonNull
     private String tela;
 
+
+
     @NonNull
     private String largo;
 

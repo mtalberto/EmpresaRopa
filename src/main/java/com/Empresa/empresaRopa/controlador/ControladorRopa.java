@@ -50,7 +50,7 @@ public class ControladorRopa {
 
     @PostMapping("/abrigos")
     public Ropa addOneRopa(@RequestBody Abrigo abrigo) {
-
+        System.out.println("Recibida abrigo: " + abrigo);
         return this.repositoryBuscarAbrigo.save(abrigo);
     }
 

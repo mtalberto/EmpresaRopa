@@ -12,7 +12,6 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Ropa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +25,9 @@ public class Ropa {
     @Column(nullable = false)
     private String color;
 
-    @Column(nullable = false)
+    @Column(name = "fcompraAlmacen", nullable =  true)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private Timestamp fCompraAlmacen;
+    private Timestamp fcompraAlmacen;
 
     @NonNull
     private String marca;

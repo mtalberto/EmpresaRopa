@@ -15,7 +15,6 @@ import lombok.*;
 public class RopaInterior extends Ropa{
 
 
-
     @NonNull
     private String tela;
 

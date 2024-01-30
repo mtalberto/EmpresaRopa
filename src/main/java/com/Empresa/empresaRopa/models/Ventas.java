@@ -24,7 +24,7 @@ public class Ventas {
     @ManyToOne
     @JoinColumn(name = "Empleado", nullable = true)
     private Empleado empleado;
-
+// sera un fk con el tipo de roba
     @Column(name = "Prenda", nullable =  false)
     private String prenda;
 
