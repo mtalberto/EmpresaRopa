@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarAbrigo  extends JpaRepository<Abrigo, Long> {
+public interface RepositoryBuscarAbrigo  extends JpaRepository<Abrigo, String> {
     List<Abrigo> findByTipo(String tipo);
 
 

@@ -16,7 +16,6 @@ public class RopaInterior extends Ropa{
 
 
 
-
     @NonNull
     private String tela;
 

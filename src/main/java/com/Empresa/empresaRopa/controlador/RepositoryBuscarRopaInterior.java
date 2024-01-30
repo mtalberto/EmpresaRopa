@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarRopaInterior  extends JpaRepository<RopaInterior, Long> {
+public interface RepositoryBuscarRopaInterior  extends JpaRepository<RopaInterior, String> {
     List<RopaInterior> findByTipo(String tipo);
 
 

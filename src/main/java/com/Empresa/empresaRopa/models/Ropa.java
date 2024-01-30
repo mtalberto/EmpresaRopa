@@ -1,5 +1,6 @@
 package com.Empresa.empresaRopa.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,8 +26,8 @@ public class Ropa {
     @Column(nullable = false)
     private String color;
 
-    @NonNull
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fCompraAlmacen;
 
     @NonNull

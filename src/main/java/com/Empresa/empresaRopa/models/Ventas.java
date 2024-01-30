@@ -7,7 +7,7 @@ import lombok.*;
 
 import java.sql.Timestamp;
 
-/**
+
 @Entity
 @Table(name = "Ventas")
 @Getter
@@ -22,7 +22,7 @@ public class Ventas {
 
     @ManyToOne
     @JoinColumn(name = "id_empleado", nullable = true)
-    private Employe empleado;
+    private Empleado empleado;
 
     @ManyToOne
     @JoinColumn(name = "id_ropa", nullable =  true) // Permite valores nulos
@@ -50,4 +50,3 @@ public class Ventas {
     private RopaInterior ropaInterior;
 
 }
-*/
