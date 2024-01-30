@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RepositoryBuscarVentas  extends JpaRepository<Ventas,String> {
-    List<Ventas> findbByPrenda(String prenda);
+    List<Ventas> findByPrenda(String prenda);
 
 }
