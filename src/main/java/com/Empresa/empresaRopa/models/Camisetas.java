@@ -20,7 +20,5 @@ public class Camisetas extends Ropa {
     @NonNull
     private String botones;
 
-    @NonNull
 
-    private String diseño;
 }

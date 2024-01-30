@@ -18,7 +18,7 @@ public class Faldas extends Ropa{
 
 
     @NonNull
-    private String diseño;
+    private String desing;
 
 
 }

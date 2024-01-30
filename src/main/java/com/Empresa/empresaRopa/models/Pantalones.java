@@ -13,5 +13,5 @@ public class Pantalones extends Ropa{
 
 
     @NonNull
-    private String diseño;
+    private String tela;
 }

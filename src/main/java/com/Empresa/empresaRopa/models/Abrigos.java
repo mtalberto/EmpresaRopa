@@ -20,6 +20,6 @@ public class Abrigos extends Ropa {
     private String largo;
     @NonNull
 
-    private String diseño;
+    private String desing;
 
 }

@@ -16,8 +16,7 @@ public class RopaInterior extends Ropa{
     //calconcillos o bragas .. etc
 
     @NonNull
-
-    private String desing;
+    private String tela;
 
 
 }

@@ -35,6 +35,9 @@ public class Ropa {
 
     @NonNull
     private String tipo;
+
+    @NonNull
+    private String Marca;
     //podria pasar el atributo tipo aqui pero es para practicar
      /* sera en el controlador
     @DateTimeFormat se usa en la capa de presentación para controlar
