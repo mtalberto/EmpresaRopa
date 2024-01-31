@@ -7,21 +7,16 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "Camisetas")
+@Table(name = "Faldas")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Camiseta extends Ropa {
+public class FaldaEntity extends Ropa{
+
+
     @NonNull
     private String tela;
-    @NonNull
-    private String bolsillo;
-    @NonNull
-    private String cuello;
-    @NonNull
-    private String botones;
-
 
 
 

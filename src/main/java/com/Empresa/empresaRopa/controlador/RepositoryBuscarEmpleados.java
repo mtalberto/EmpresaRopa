@@ -1,16 +1,17 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.Empleado;
+import com.Empresa.empresaRopa.models.EmpleadoEntity;
 
+import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface RepositoryBuscarEmpleados extends JpaRepository<Empleado, String> {
+public interface RepositoryBuscarEmpleados extends JpaRepository<EmpleadoEntity, Long > {
 
-    List<Empleado> findBySegundoApellido(String segundoApellido);
-    List<Empleado> findByPrimerApellido(String primerApellido);
+
+    List<EmpleadoEntity> findById(long id_empleado);
 
 }

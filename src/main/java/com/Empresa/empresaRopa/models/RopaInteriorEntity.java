@@ -5,16 +5,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
 
+
 @Entity
-@Table(name = "Pantalones")
+@Table(name = "RopaInterior")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pantalon extends Ropa{
-
+public class RopaInteriorEntity extends Ropa{
 
 
     @NonNull
     private String tela;
+
+
 }

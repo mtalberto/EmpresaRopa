@@ -1,13 +1,12 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.Falda;
-import com.Empresa.empresaRopa.models.RopaInterior;
+import com.Empresa.empresaRopa.models.RopaInteriorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarRopaInterior  extends JpaRepository<RopaInterior, String> {
-    List<RopaInterior> findByTipo(String tipo);
+public interface RepositoryBuscarRopaInterior  extends JpaRepository<RopaInteriorEntity, String> {
+    List<RopaInteriorEntity> findByTipo(String tipo);
 
 
 }

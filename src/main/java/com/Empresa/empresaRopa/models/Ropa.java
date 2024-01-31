@@ -12,10 +12,11 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@SequenceGenerator(name = "ropaseq", sequenceName = "ropaseqname")
 public class Ropa {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_ropa;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
 
     @Column(nullable = false)
@@ -25,7 +26,7 @@ public class Ropa {
     @Column(nullable = false)
     private String color;
 
-    @Column(name = "fcompraAlmacen", nullable =  true)
+    @Column(name = "fcompraAlmacen", nullable =  false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fcompraAlmacen;
 
@@ -37,6 +38,8 @@ public class Ropa {
 
     @NonNull
     private String nombre;
+    @NonNull
+    private String cantidad;
 
     //podria pasar el atributo tipo aqui pero es para practicar
      /* sera en el controlador

@@ -1,13 +1,13 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.Camiseta;
+import com.Empresa.empresaRopa.models.CamisetaEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarCamiseta  extends JpaRepository<Camiseta, String> {
-    List<Camiseta> findByTipo(String tipo);
+public interface RepositoryBuscarCamiseta  extends JpaRepository<CamisetaEntity, String> {
+    List<CamisetaEntity> findByTipo(String tipo);
 
 
 }

@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 @Table(name = "Empleados")
-public class Empleado {
+public class EmpleadoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,8 +47,4 @@ public class Empleado {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fechaDespido;
-
-   // @OneToMany(mappedBy = "empleado")
-   // private List<Ventas> ventas;
-
 }
