@@ -19,7 +19,7 @@ public class EmpleadoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_empleado;
+    private long id;
 
     @NonNull
     @Column(nullable = false)

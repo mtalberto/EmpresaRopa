@@ -12,6 +12,6 @@ import java.util.List;
 public interface RepositoryBuscarEmpleados extends JpaRepository<EmpleadoEntity, Long > {
 
 
-    List<EmpleadoEntity> findById(long id_empleado);
+    List<EmpleadoEntity> findById(long id);
 
 }

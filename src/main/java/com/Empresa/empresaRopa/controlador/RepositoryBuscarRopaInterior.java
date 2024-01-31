@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarRopaInterior  extends JpaRepository<RopaInteriorEntity, String> {
-    List<RopaInteriorEntity> findByTipo(String tipo);
+public interface RepositoryBuscarRopaInterior  extends JpaRepository<RopaInteriorEntity, Long> {
+    List<RopaInteriorEntity> findById(long id);
 
 
 }

@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarVentas  extends JpaRepository<VentasEntity,String> {
-    List<VentasEntity> findByPantalonEntityNombre(String nombre);
-    List<VentasEntity> findByAbrigoEntityNombre(String nombre);
-    List<VentasEntity> findByCamisetaEntityNombre(String nombre);
-    List<VentasEntity> findByFaldaEntityNombre(String nombre);
-    List<VentasEntity> findByRopaInteriorEntityNombre(String nombre);
+public interface RepositoryBuscarVentas  extends JpaRepository<VentasEntity,Long> {
+    List<VentasEntity> findByPantalonEntityId(long id);
+    List<VentasEntity> findByAbrigoEntityId(long id);
+    List<VentasEntity> findByCamisetaEntityId(long id);
+    List<VentasEntity> findByFaldaEntityId(long id);
+    List<VentasEntity> findByRopaInteriorEntityId(long id);
 
-    List<VentasEntity> findByEmpleadoEntityNombre(String nombre);
+    List<VentasEntity> findByEmpleadoEntityId(long id_empleado);
 }

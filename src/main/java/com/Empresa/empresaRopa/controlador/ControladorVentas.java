@@ -1,5 +1,6 @@
 package com.Empresa.empresaRopa.controlador;
 
+import com.Empresa.empresaRopa.models.AbrigoEntity;
 import com.Empresa.empresaRopa.models.EmpleadoEntity;
 import com.Empresa.empresaRopa.models.VentasEntity;
 import jakarta.persistence.EntityNotFoundException;
@@ -11,18 +12,40 @@ public class ControladorVentas {
     private final RepositoryBuscarVentas repositoryBuscarVentas;
     private final RepositoryBuscarEmpleados repositoryBuscarEmpleados;
 
-    public ControladorVentas(RepositoryBuscarVentas repositoryBuscarVentas, RepositoryBuscarEmpleados repositoryBuscarEmpleados) {
+    private final RepositoryBuscarAbrigo repositoryBuscarAbrigo;
+
+    private final RepositoryBuscarCamiseta repositoryBuscarCamiseta;
+
+    private final RepositoryBuscarRopaInterior repositoryBuscarRopaInterior;
+
+    private final RepositoryBuscarPantalon repositoryBuscarPantalon;
+
+    private final RepositoryBuscarFalda repositoryBuscarFalda;
+
+
+
+    public ControladorVentas(RepositoryBuscarVentas repositoryBuscarVentas, RepositoryBuscarEmpleados repositoryBuscarEmpleados, RepositoryBuscarAbrigo repositoryBuscarAbrigo, RepositoryBuscarCamiseta repositoryBuscarCamiseta, RepositoryBuscarRopaInterior repositoryBuscarRopaInterior, RepositoryBuscarPantalon repositoryBuscarPantalon, RepositoryBuscarFalda repositoryBuscarFalda) {
         this.repositoryBuscarVentas = repositoryBuscarVentas;
         this.repositoryBuscarEmpleados = repositoryBuscarEmpleados;
+        this.repositoryBuscarAbrigo = repositoryBuscarAbrigo;
+        this.repositoryBuscarCamiseta = repositoryBuscarCamiseta;
+        this.repositoryBuscarRopaInterior = repositoryBuscarRopaInterior;
+        this.repositoryBuscarPantalon = repositoryBuscarPantalon;
+        this.repositoryBuscarFalda = repositoryBuscarFalda;
     }
 //@RequestBody) se espera que sea un objeto Ventas, que se guarda en la base de datos.
     //debees recibir el id del empleado como parametro de la consulta
     @PostMapping("/ventas")
-    public VentasEntity addOneVenta(@RequestBody VentasEntity venta,@RequestParam Long id_empleado) {
+    public VentasEntity addOneVenta(@RequestBody VentasEntity venta,@RequestParam Long id_empleado,@RequestParam Long id_ropa) {
         EmpleadoEntity empleado=repositoryBuscarEmpleados.findById(id_empleado)
                         .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
 
             venta.setEmpleadoEntity(empleado);
+        AbrigoEntity abrigo= repositoryBuscarAbrigo.findById(id_ropa)
+                .orElseThrow(() -> new EntityNotFoundException("Abrigo no encontrado"));
+            venta.setAbrigoEntity(abrigo);
+
+
         return this.repositoryBuscarVentas.save(venta);
     }
 

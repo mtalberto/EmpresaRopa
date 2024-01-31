@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface RepositoryBuscarFalda extends JpaRepository<FaldaEntity, String>{
-    List<FaldaEntity> findByTipo(String tipo);
+public interface RepositoryBuscarFalda extends JpaRepository<FaldaEntity, Long>{
+    List<FaldaEntity> findById(long id);
 
 
 }
