@@ -21,30 +21,34 @@ public class EmpleadoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
+
     @Column(nullable = false)
     private String primerApellido;
 
-    @NonNull
+
     @Column(nullable = false)
     private String segundoApellido;
 
-    @NonNull
+    @Column(nullable = false,length =9)
+    private String dni;
+
+
     @Column(nullable = false)
     private String nombre;
 
     //Email
-    @NonNull
+
     @Email
     @Column(nullable = false)
     private String email;
 
-    @NonNull
+
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaContratado;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaDespido;
 }

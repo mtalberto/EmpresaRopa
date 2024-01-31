@@ -1,10 +1,6 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.FaldaEntity;
-import com.Empresa.empresaRopa.models.AbrigoEntity;
-import com.Empresa.empresaRopa.models.CamisetaEntity;
-import com.Empresa.empresaRopa.models.Ropa;
-import com.Empresa.empresaRopa.models.RopaInteriorEntity;
+import com.Empresa.empresaRopa.models.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,13 +26,13 @@ public class ControladorRopa {
     }
 
 
-    @GetMapping("/falda")
+    @GetMapping("/faldas")
     public Iterable<FaldaEntity> findAllFaldas() {
 
         return this.repositoryBuscarFalda.findAll();
     }
 
-    @PostMapping("/falda")
+    @PostMapping("/faldas")
     public Ropa addOneRopa(@RequestBody FaldaEntity faldaEntity) {
         
         return this.repositoryBuscarFalda.save(faldaEntity);
@@ -54,13 +50,13 @@ public class ControladorRopa {
         return this.repositoryBuscarAbrigo.save(abrigoEntity);
     }
 
-    @GetMapping("/camiseta")
+    @GetMapping("/camisetas")
     public Iterable<CamisetaEntity> findAllCamisetas() {
 
         return this.repositoryBuscarCamiseta.findAll();
     }
 
-    @PostMapping("/camiseta")
+    @PostMapping("/camisetas")
     public Ropa addOneRopa(@RequestBody CamisetaEntity camisetaEntity) {
 
         return this.repositoryBuscarCamiseta.save(camisetaEntity);
@@ -76,5 +72,19 @@ public class ControladorRopa {
 
         return this.repositoryBuscarRopaInterior.save(ropaInteriorEntity);
     }
+
+
+    @GetMapping("/pantalones")
+    public Iterable<PantalonEntity> findAllPantalones() {
+
+        return this.repositoryBuscarPantalon.findAll();
+    }
+
+    @PostMapping("/pantalones")
+    public Ropa addOneRopa(@RequestBody PantalonEntity pantalonEntity) {
+
+        return this.repositoryBuscarPantalon.save(pantalonEntity);
+    }
+
 
 }

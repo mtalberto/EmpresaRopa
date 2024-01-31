@@ -1,8 +1,6 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.AbrigoEntity;
-import com.Empresa.empresaRopa.models.EmpleadoEntity;
-import com.Empresa.empresaRopa.models.VentasEntity;
+import com.Empresa.empresaRopa.models.*;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,16 +34,43 @@ public class ControladorVentas {
 //@RequestBody) se espera que sea un objeto Ventas, que se guarda en la base de datos.
     //debees recibir el id del empleado como parametro de la consulta
     @PostMapping("/ventas")
-    public VentasEntity addOneVenta(@RequestBody VentasEntity venta,@RequestParam Long id_empleado,@RequestParam Long id_ropa) {
+    public VentasEntity addOneVenta(@RequestBody VentasEntity venta, @RequestParam Long id_empleado, @RequestParam  Long id_ropa,@RequestParam String tipo) {
         EmpleadoEntity empleado=repositoryBuscarEmpleados.findById(id_empleado)
                         .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
-
             venta.setEmpleadoEntity(empleado);
-        AbrigoEntity abrigo= repositoryBuscarAbrigo.findById(id_ropa)
-                .orElseThrow(() -> new EntityNotFoundException("Abrigo no encontrado"));
-            venta.setAbrigoEntity(abrigo);
+
+        switch (tipo.toLowerCase()) {
+            case "abrigo":
+                AbrigoEntity abrigo = repositoryBuscarAbrigo.findById(id_ropa)
+                        .orElseThrow(() -> new EntityNotFoundException("Abrigo no encontrado"));
+                venta.setAbrigoEntity(abrigo);
+                break;
+            case "falda":
+                FaldaEntity falda = repositoryBuscarFalda.findById(id_ropa)
+                        .orElseThrow(() -> new EntityNotFoundException("Falda no encontrada"));
+                venta.setFaldaEntity(falda);
+                break;
+            case "camiseta":
+                CamisetaEntity camiseta = repositoryBuscarCamiseta.findById(id_ropa)
+                        .orElseThrow(() -> new EntityNotFoundException("Camiseta no encontrada"));
+                venta.setCamisetaEntity(camiseta);
+                break;
+
+            case "pantalon":
+                PantalonEntity pantalon = repositoryBuscarPantalon.findById(id_ropa)
+                        .orElseThrow(() -> new EntityNotFoundException("pantalon no encontrado"));
+                venta.setPantalonEntity(pantalon);
+                break;
+            case "ropainterior":
+                RopaInteriorEntity ropaInterior = repositoryBuscarRopaInterior.findById(id_ropa)
+                        .orElseThrow(() -> new EntityNotFoundException("ropa interior no encontrada"));
+                venta.setRopaInteriorEntity(ropaInterior);
+                break;
 
 
+            default:
+                throw new IllegalArgumentException("Tipo de prenda no soportado");
+        }
         return this.repositoryBuscarVentas.save(venta);
     }
 

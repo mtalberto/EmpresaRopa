@@ -13,11 +13,14 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 @SequenceGenerator(name = "ropaseq", sequenceName = "ropaseqname")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//La anotación @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) es parte de la Java Persistence API (JPA), que se
+// utiliza para definir cómo se mapea una jerarquía de clases de Java a una base de datos relacional
 public class Ropa {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
+    //TABLE_PER_CLASS hace una tabla de cada herencia
 
     @Column(nullable = false)
     private String talla;
@@ -25,7 +28,8 @@ public class Ropa {
 
     @Column(nullable = false)
     private String color;
-
+    //tuve un error en postaman que se me duplicaba la fecha por que antes era fCcompraAlmacen
+    // y lo cambie a fcompraAlmacen y no se me duplico
     @Column(name = "fcompraAlmacen", nullable =  false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fcompraAlmacen;

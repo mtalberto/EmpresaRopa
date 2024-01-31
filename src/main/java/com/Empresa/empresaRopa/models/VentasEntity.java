@@ -36,7 +36,7 @@ public class VentasEntity {
     private PantalonEntity pantalonEntity;
 
     @NonNull
-    @Column(name = "fechaventa", nullable =  true)
+    @Column(name = "fechaventa", nullable =  false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fechaVenta;
 
@@ -61,4 +61,5 @@ public class VentasEntity {
 
     @Column(name = "cantidad", nullable =  false)
     private Integer cantidad;
+;
 }
