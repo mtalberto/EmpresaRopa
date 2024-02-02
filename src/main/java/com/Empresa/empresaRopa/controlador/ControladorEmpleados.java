@@ -2,15 +2,11 @@ package com.Empresa.empresaRopa.controlador;
 
 
 import com.Empresa.empresaRopa.models.EmpleadoEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-
+@RequestMapping(value="/RecursosHumanos")
 public class ControladorEmpleados {
 
     private final RepositoryBuscarEmpleados repositoryBuscarEmpleados;
