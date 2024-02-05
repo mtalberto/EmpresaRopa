@@ -3,6 +3,11 @@ package com.Empresa.empresaRopa.controlador;
 import com.Empresa.empresaRopa.models.*;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ *  @RestController [3], implementa una API REST
+ *  y se encarga de procesar las peticiones que llegan en los distintos métodos
+ *  del protocolo HTML: GET, POST, PUT, DELETE
+ */
 @RestController
 @RequestMapping(value="/Ropa")
 public class ControladorRopa {
