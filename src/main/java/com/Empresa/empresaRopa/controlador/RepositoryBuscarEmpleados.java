@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RepositoryBuscarEmpleados extends JpaRepository<EmpleadoEntity, Long > {
-
-
+public interface RepositoryBuscarEmpleados extends JCrudRepository<EmpleadoEntity, Long > {
+//puedo hacer consultas personalizadas mediante  @Query("SELECT m FROM Modelo m WHERE m.atributo = :atributo")
+// @Query("SELECT m FROM Modelo m WHERE m.atributo = :atributo")
+//    List<Modelo> buscarPorAtributo(@Param("atributo") String atributo);
     List<EmpleadoEntity> findById(long id);
 
 }

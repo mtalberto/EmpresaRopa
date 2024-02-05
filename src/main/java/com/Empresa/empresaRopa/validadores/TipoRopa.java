@@ -1,4 +1,4 @@
-package com.Empresa.empresaRopa.validadores;
+/**package com.Empresa.empresaRopa.validadores;
 
 
 import jakarta.validation.ConstraintValidatorContext;
@@ -10,3 +10,4 @@ public class TipoRopa implements ConstraintValidator<LengthValidation, String> {
         return tiporopa[field];
     }
 }
+*/

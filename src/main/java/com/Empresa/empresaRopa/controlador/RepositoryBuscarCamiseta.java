@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarCamiseta  extends JpaRepository<CamisetaEntity,Long > {
+public interface RepositoryBuscarCamiseta  extends CrudRepository<CamisetaEntity,Long > {
     List<CamisetaEntity> findById(long id);
 
     List<FaldaEntity> findByTipo(String tipo);

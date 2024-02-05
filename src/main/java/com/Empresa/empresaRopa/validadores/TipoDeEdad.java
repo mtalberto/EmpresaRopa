@@ -1,4 +1,4 @@
-package package com.Empresa.empresaRopa.validadores;
+/**package package com.Empresa.empresaRopa.validadores;
 
 import jakarta.validation.Payload;
 
@@ -11,3 +11,4 @@ public interface TipoDeEdad {
 
     int value();
 }
+*/
