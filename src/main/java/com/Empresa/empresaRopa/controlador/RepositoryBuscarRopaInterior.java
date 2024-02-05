@@ -2,7 +2,7 @@ package com.Empresa.empresaRopa.controlador;
 
 import com.Empresa.empresaRopa.models.FaldaEntity;
 import com.Empresa.empresaRopa.models.RopaInteriorEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
