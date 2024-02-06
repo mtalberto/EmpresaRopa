@@ -11,7 +11,6 @@ import java.util.List;
 public interface RepositoryBuscarPantalon  extends CrudRepository<PantalonEntity,Long>{
     List<PantalonEntity> findById(long id);
 
-    List<FaldaEntity> findByTipo(String tiporopa);
 
 
 

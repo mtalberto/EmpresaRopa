@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface RepositoryBuscarRopaInterior  extends CrudRepository<RopaInteriorEntity, Long> {
     List<RopaInteriorEntity> findById(long id);
-    List<FaldaEntity> findByTipo(String tiporopa);
+
 
 }

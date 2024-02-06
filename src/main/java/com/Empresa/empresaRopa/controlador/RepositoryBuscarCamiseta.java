@@ -9,7 +9,7 @@ import java.util.List;
 public interface RepositoryBuscarCamiseta  extends CrudRepository<CamisetaEntity,Long > {
     List<CamisetaEntity> findById(long id);
 
-    List<FaldaEntity> findByTipo(String tiporopa);
+
 
 
 }

@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @MappedSuperclass
 @Getter
@@ -37,9 +36,6 @@ public abstract class Ropa {
     @NonNull
     private String marca;
 
-    @NonNull
-    @OneToMany(mappedBy="ropa")
-    private List<VentasEntity> ventas;
 
     @Column( nullable =  false)
     private String tiporopa;

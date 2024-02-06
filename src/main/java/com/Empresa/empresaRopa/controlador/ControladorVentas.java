@@ -37,34 +37,34 @@ public class ControladorVentas {
     public VentasEntity addOneVenta(@RequestBody VentasEntity venta, @RequestParam Long id_empleado, @RequestParam  Long id_ropa,@RequestParam String tipo) {
         EmpleadoEntity empleado=repositoryBuscarEmpleados.findById(id_empleado)
                         .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
-            venta.setEmpleadoEntity(empleado);
+            venta.setEmpleado(empleado);
 
         switch (tipo.toLowerCase()) {
             case "abrigo":
                 AbrigoEntity abrigo = repositoryBuscarAbrigo.findById(id_ropa)
                         .orElseThrow(() -> new EntityNotFoundException("Abrigo no encontrado"));
-                venta.setAbrigoEntity(abrigo);
+                venta.setAbrigo(abrigo);
                 break;
             case "falda":
                 FaldaEntity falda = repositoryBuscarFalda.findById(id_ropa)
                         .orElseThrow(() -> new EntityNotFoundException("Falda no encontrada"));
-                venta.setFaldaEntity(falda);
+                venta.setFalda(falda);
                 break;
             case "camiseta":
                 CamisetaEntity camiseta = repositoryBuscarCamiseta.findById(id_ropa)
                         .orElseThrow(() -> new EntityNotFoundException("Camiseta no encontrada"));
-                venta.setCamisetaEntity(camiseta);
+                venta.setCamiseta(camiseta);
                 break;
 
             case "pantalon":
                 PantalonEntity pantalon = repositoryBuscarPantalon.findById(id_ropa)
                         .orElseThrow(() -> new EntityNotFoundException("pantalon no encontrado"));
-                venta.setPantalonEntity(pantalon);
+                venta.setPantalon(pantalon);
                 break;
             case "ropainterior":
                 RopaInteriorEntity ropaInterior = repositoryBuscarRopaInterior.findById(id_ropa)
                         .orElseThrow(() -> new EntityNotFoundException("ropa interior no encontrada"));
-                venta.setRopaInteriorEntity(ropaInterior);
+                venta.setRopaInterior(ropaInterior);
                 break;
 
 

@@ -28,13 +28,14 @@ public class VentasEntity {
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
     @ManyToOne
     @JoinColumn(name = "empleado_id")
-    private EmpleadoEntity empleadoEntity;
+    private EmpleadoEntity empleado;
+
 
 
     //join colum solo se puede usar con entitys
     @ManyToOne
     @JoinColumn(name = "pantalon_id") // Permite valores nulos
-    private PantalonEntity pantalonEntity;
+    private PantalonEntity pantalon;
 
     @NonNull
     @Column(name = "fechaventa", nullable =  false)
@@ -42,25 +43,28 @@ public class VentasEntity {
     private Timestamp fechaVenta;
 
     //con la anotacion joinColumn no hace referenci a un atributo o de la entidad PantalonEEntity
+    //joincolum se usa en el lado many!!! no en lado one
     //faldaid sera un campo en tabla ventas
     @ManyToOne
     @JoinColumn(name = "falda_id", nullable =  true)//pongo true porque solo añadira una prenda cada vez
-    private FaldaEntity faldaEntity;
+    private FaldaEntity falda;
 
     @ManyToOne
     @JoinColumn(name = "abrigo_id", nullable =  true)
-    private AbrigoEntity abrigoEntity;
+    private AbrigoEntity abrigo;
 
     @ManyToOne
     @JoinColumn(name = "camiseta_id", nullable =  true)
-    private CamisetaEntity camisetaEntity;
+    private CamisetaEntity camiseta;
 
     @ManyToOne
     @JoinColumn(name = "ropainterior_id", nullable =  true)
-    private RopaInteriorEntity ropaInteriorEntity;
+    private RopaInteriorEntity ropaInterior;
 
 
     @Column(name = "cantidad", nullable =  false)
     private Integer cantidad;
-;
+
+
+
 }

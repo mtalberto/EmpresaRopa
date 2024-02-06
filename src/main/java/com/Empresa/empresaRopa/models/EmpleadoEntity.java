@@ -28,8 +28,8 @@ public class EmpleadoEntity {
     private String primerApellido;
 
 
-    @ManyToOne
-    @Column(nullable = false)
+    //@mappeby señalas el campo de ventas con el que tiene relacion
+    @OneToMany(mappedBy = "empleado")
     private List<VentasEntity> ventas;
 
     @Column(nullable = false)
@@ -51,11 +51,11 @@ public class EmpleadoEntity {
 
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    @Temporal(TemporalType.TIMESTAMP)
+
     private Timestamp fechaContratado;
 
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    @Temporal(TemporalType.TIMESTAMP)
+
     private Timestamp fechaDespido;
 }

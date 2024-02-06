@@ -3,9 +3,12 @@ package com.Empresa.empresaRopa.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.util.List;
 
 
 @Entity
@@ -32,6 +35,9 @@ public class CamisetaEntity extends Ropa {
     @NotNull(message = "el campo botones no puede estar vacio")
     private String botones;
 
+    @NonNull
+    @OneToMany(mappedBy="camiseta")
+    private List<VentasEntity> ventas;
 
 
 

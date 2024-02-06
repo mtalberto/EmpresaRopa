@@ -9,6 +9,5 @@ import java.util.List;
 public interface RepositoryBuscarAbrigo  extends CrudRepository<AbrigoEntity,Long> {
     List<AbrigoEntity> findById(long id);
 
-    List<FaldaEntity> findByTipo(String tiporopa);
 
 }
