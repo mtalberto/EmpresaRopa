@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 
 @Entity
@@ -23,8 +24,13 @@ public class EmpleadoEntity {
 
 
     @Column(nullable = false)
+
     private String primerApellido;
 
+
+    @ManyToOne
+    @Column(nullable = false)
+    private List<VentasEntity> ventas;
 
     @Column(nullable = false)
     private String segundoApellido;
@@ -47,6 +53,7 @@ public class EmpleadoEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     private Timestamp fechaContratado;
+
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)

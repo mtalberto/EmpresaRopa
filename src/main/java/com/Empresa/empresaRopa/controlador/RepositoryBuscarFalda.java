@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface RepositoryBuscarFalda extends CrudRepository<FaldaEntity, Long> {
     List<FaldaEntity> findById(long id);
-    List<FaldaEntity> findByTipo(String tipo);
+    List<FaldaEntity> findByTipo(String tiporopa);
 
 }

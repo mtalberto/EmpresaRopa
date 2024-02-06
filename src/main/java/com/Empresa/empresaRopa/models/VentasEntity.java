@@ -16,23 +16,24 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@SequenceGenerator(name = "ventaseq", sequenceName = "ventaseqname")
+
 public class VentasEntity {
     //en la table many es donde tienes que poner manytoOne
     // especifica el nombre de la secuencia de base de datos que se utilizará
     // para generar los valores de la clave primaria.
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
     @ManyToOne
-    @JoinColumn(name = "Empleado", nullable = false)
+    @JoinColumn(name = "empleado_id")
     private EmpleadoEntity empleadoEntity;
 
 
     //join colum solo se puede usar con entitys
     @ManyToOne
-    @JoinColumn(name = "Pantalon", nullable =  true) // Permite valores nulos
+    @JoinColumn(name = "pantalon_id") // Permite valores nulos
     private PantalonEntity pantalonEntity;
 
     @NonNull
@@ -41,21 +42,21 @@ public class VentasEntity {
     private Timestamp fechaVenta;
 
     //con la anotacion joinColumn no hace referenci a un atributo o de la entidad PantalonEEntity
-    //sera un campo en tabla ventas
+    //faldaid sera un campo en tabla ventas
     @ManyToOne
-    @JoinColumn(name = "falda", nullable =  true)//pongo true porque solo añadira una prenda cada vez
+    @JoinColumn(name = "falda_id", nullable =  true)//pongo true porque solo añadira una prenda cada vez
     private FaldaEntity faldaEntity;
 
     @ManyToOne
-    @JoinColumn(name = "abrigo", nullable =  true)
+    @JoinColumn(name = "abrigo_id", nullable =  true)
     private AbrigoEntity abrigoEntity;
 
     @ManyToOne
-    @JoinColumn(name = "camiseta", nullable =  true)
+    @JoinColumn(name = "camiseta_id", nullable =  true)
     private CamisetaEntity camisetaEntity;
 
     @ManyToOne
-    @JoinColumn(name = "ropainterior", nullable =  true)
+    @JoinColumn(name = "ropainterior_id", nullable =  true)
     private RopaInteriorEntity ropaInteriorEntity;
 
 

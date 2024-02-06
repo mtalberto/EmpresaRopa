@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface RepositoryBuscarPantalon  extends CrudRepository<PantalonEntity,Long>{
     List<PantalonEntity> findById(long id);
-    List<FaldaEntity> findByTipo(String tipo);
+    List<FaldaEntity> findByTipo(String tiporopa);
 // los reporsitory se hacen de las clases entity jparepository
 }

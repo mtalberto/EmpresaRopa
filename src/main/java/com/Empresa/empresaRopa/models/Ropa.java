@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @MappedSuperclass
 @Getter
@@ -12,13 +13,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@SequenceGenerator(name = "ropaseq", sequenceName = "ropaseqname")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+// esto solo seria si ropa fuese una entity @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 //La anotación @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) es parte de la Java Persistence API (JPA), que se
 // utiliza para definir cómo se mapea una jerarquía de clases de Java a una base de datos relacional
-public class Ropa {
+public abstract class Ropa {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //TABLE_PER_CLASS hace una tabla de cada herencia
 
@@ -38,7 +38,11 @@ public class Ropa {
     private String marca;
 
     @NonNull
-    private String tipo;
+    @OneToMany(mappedBy="ropa")
+    private List<VentasEntity> ventas;
+
+    @Column( nullable =  false)
+    private String tiporopa;
 
     @NonNull
     private String nombre;
