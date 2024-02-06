@@ -1,16 +1,16 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.Empleado;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.Empresa.empresaRopa.models.EmpleadoEntity;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface RepositoryBuscarEmpleados extends JpaRepository<Empleado, String> {
-
-    List<Empleado> findBySegundoApellido(String segundoApellido);
-    List<Empleado> findByPrimerApellido(String primerApellido);
+public interface RepositoryBuscarEmpleados extends CrudRepository<EmpleadoEntity, Long > {
+//puedo hacer consultas personalizadas mediante  @Query("SELECT m FROM Modelo m WHERE m.atributo = :atributo")
+// @Query("SELECT m FROM Modelo m WHERE m.atributo = :atributo")
+//    List<Modelo> buscarPorAtributo(@Param("atributo") String atributo);
+    List<EmpleadoEntity> findById(long id);
 
 }

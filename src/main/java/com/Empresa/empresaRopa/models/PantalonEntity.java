@@ -1,9 +1,13 @@
 package com.Empresa.empresaRopa.models;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Pantalones")
@@ -11,9 +15,14 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pantalon extends Ropa{
+public class PantalonEntity extends Ropa{
+
 
 
     @NonNull
+    @Column(nullable = false)
     private String tela;
+    @NonNull
+    @OneToMany(mappedBy="pantalon")
+    private List<VentasEntity> ventas;
 }

@@ -12,12 +12,14 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Ropa {
+// esto solo seria si ropa fuese una entity @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//La anotación @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) es parte de la Java Persistence API (JPA), que se
+// utiliza para definir cómo se mapea una jerarquía de clases de Java a una base de datos relacional
+public abstract class Ropa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_ropa;
-
+    private Long id;
+    //TABLE_PER_CLASS hace una tabla de cada herencia
 
     @Column(nullable = false)
     private String talla;
@@ -25,19 +27,23 @@ public class Ropa {
 
     @Column(nullable = false)
     private String color;
-
-    @Column(nullable = false)
+    //tuve un error en postaman que se me duplicaba la fecha por que antes era fCcompraAlmacen
+    // y lo cambie a fcompraAlmacen y no se me duplico
+    @Column(name = "fcompraAlmacen", nullable =  false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private Timestamp fCompraAlmacen;
+    private Timestamp fcompraAlmacen;
 
     @NonNull
     private String marca;
 
-    @NonNull
-    private String tipo;
+
+    @Column( nullable =  false)
+    private String tiporopa;
 
     @NonNull
     private String nombre;
+    @NonNull
+    private String cantidad;
 
     //podria pasar el atributo tipo aqui pero es para practicar
      /* sera en el controlador
