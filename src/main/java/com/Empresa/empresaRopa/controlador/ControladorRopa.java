@@ -1,6 +1,7 @@
 package com.Empresa.empresaRopa.controlador;
 
 import com.Empresa.empresaRopa.models.*;
+import com.Empresa.empresaRopa.repository.*;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,19 +13,19 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/Ropa")
 public class ControladorRopa {
 
-    private final RepositoryBuscarCamiseta repositoryBuscarCamiseta;
-    private final RepositoryBuscarFalda repositoryBuscarFalda;
-    private final RepositoryBuscarPantalon repositoryBuscarPantalon;
-    private final RepositoryBuscarRopaInterior repositoryBuscarRopaInterior;
-    private final RepositoryBuscarAbrigo repositoryBuscarAbrigo;
+    private final RepositorCamiseta repositorCamiseta;
+    private final RepositoryFalda repositoryFalda;
+    private final RepositoryPantalon repositoryPantalon;
+    private final RepositoryRopaInterior repositoryRopaInterior;
+    private final RepositoryAbrigo repositoryAbrigo;
 
 
-    public ControladorRopa(RepositoryBuscarFalda repositoryBuscarFalda, RepositoryBuscarCamiseta repositoryBuscarCamiseta, RepositoryBuscarPantalon repositoryBuscarPantalon, RepositoryBuscarAbrigo repositoryBuscarAbrigo,RepositoryBuscarRopaInterior repositoryBuscarRopaInterior) {
-        this.repositoryBuscarFalda = repositoryBuscarFalda;
-        this.repositoryBuscarRopaInterior = repositoryBuscarRopaInterior;
-        this.repositoryBuscarPantalon = repositoryBuscarPantalon;
-        this.repositoryBuscarAbrigo=repositoryBuscarAbrigo;
-        this.repositoryBuscarCamiseta=repositoryBuscarCamiseta;
+    public ControladorRopa(RepositoryFalda repositoryFalda, RepositorCamiseta repositorCamiseta, RepositoryPantalon repositoryPantalon, RepositoryAbrigo repositoryAbrigo, RepositoryRopaInterior repositoryRopaInterior) {
+        this.repositoryFalda = repositoryFalda;
+        this.repositoryRopaInterior = repositoryRopaInterior;
+        this.repositoryPantalon = repositoryPantalon;
+        this.repositoryAbrigo = repositoryAbrigo;
+        this.repositorCamiseta = repositorCamiseta;
 
     }
 
@@ -32,61 +33,61 @@ public class ControladorRopa {
     @GetMapping("/faldas")
     public Iterable<FaldaEntity> findAllFaldas() {
 
-        return this.repositoryBuscarFalda.findAll();
+        return this.repositoryFalda.findAll();
     }
 
     @PostMapping("/faldas")
     public Ropa addOneRopa(@RequestBody FaldaEntity faldaEntity) {
         
-        return this.repositoryBuscarFalda.save(faldaEntity);
+        return this.repositoryFalda.save(faldaEntity);
     }
 
     @GetMapping("/abrigos")
     public Iterable<AbrigoEntity> findAllAbrigos() {
 
-        return this.repositoryBuscarAbrigo.findAll();
+        return this.repositoryAbrigo.findAll();
     }
 
     @PostMapping("/abrigos")
     public Ropa addOneRopa(@RequestBody AbrigoEntity abrigoEntity) {
         System.out.println("Recibida abrigo: " + abrigoEntity);
-        return this.repositoryBuscarAbrigo.save(abrigoEntity);
+        return this.repositoryAbrigo.save(abrigoEntity);
     }
 
     @GetMapping("/camisetas")
     public Iterable<CamisetaEntity> findAllCamisetas() {
 
-        return this.repositoryBuscarCamiseta.findAll();
+        return this.repositorCamiseta.findAll();
     }
 
     @PostMapping("/camisetas")
     public Ropa addOneRopa(@RequestBody CamisetaEntity camisetaEntity) {
 
-        return this.repositoryBuscarCamiseta.save(camisetaEntity);
+        return this.repositorCamiseta.save(camisetaEntity);
     }
     @GetMapping("/ropaInterior")
     public Iterable<RopaInteriorEntity> findAllRopaInterior() {
 
-        return this.repositoryBuscarRopaInterior.findAll();
+        return this.repositoryRopaInterior.findAll();
     }
 
     @PostMapping("/ropaInterior")
     public Ropa addOneRopa(@RequestBody RopaInteriorEntity ropaInteriorEntity) {
 
-        return this.repositoryBuscarRopaInterior.save(ropaInteriorEntity);
+        return this.repositoryRopaInterior.save(ropaInteriorEntity);
     }
 
 
     @GetMapping("/pantalones")
     public Iterable<PantalonEntity> findAllPantalones() {
 
-        return this.repositoryBuscarPantalon.findAll();
+        return this.repositoryPantalon.findAll();
     }
 
     @PostMapping("/pantalones")
     public Ropa addOneRopa(@RequestBody PantalonEntity pantalonEntity) {
 
-        return this.repositoryBuscarPantalon.save(pantalonEntity);
+        return this.repositoryPantalon.save(pantalonEntity);
     }
 
 

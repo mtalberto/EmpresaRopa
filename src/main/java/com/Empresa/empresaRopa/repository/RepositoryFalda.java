@@ -1,4 +1,4 @@
-package com.Empresa.empresaRopa.controlador;
+package com.Empresa.empresaRopa.repository;
 
 
 import com.Empresa.empresaRopa.models.FaldaEntity;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface RepositoryBuscarFalda extends CrudRepository<FaldaEntity, Long> {
+public interface RepositoryFalda extends CrudRepository<FaldaEntity, Long> {
     List<FaldaEntity> findById(long id);
 
 

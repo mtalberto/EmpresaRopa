@@ -1,14 +1,12 @@
-package com.Empresa.empresaRopa.controlador;
+package com.Empresa.empresaRopa.repository;
 
 
-import com.Empresa.empresaRopa.models.FaldaEntity;
 import com.Empresa.empresaRopa.models.PantalonEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RepositoryBuscarPantalon  extends CrudRepository<PantalonEntity,Long>{
+public interface RepositoryPantalon extends CrudRepository<PantalonEntity,Long>{
     List<PantalonEntity> findById(long id);
 
 

@@ -1,8 +1,8 @@
 package com.Empresa.empresaRopa.servicios;
 
 
-import com.Empresa.empresaRopa.controlador.*;
 import com.Empresa.empresaRopa.models.*;
+import com.Empresa.empresaRopa.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +16,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicioRopa {
 
-    private final RepositoryBuscarPantalon pantalonRepository;
-    private final RepositoryBuscarAbrigo abrigoRepository;
+    private final RepositoryPantalon pantalonRepository;
+    private final RepositoryAbrigo abrigoRepository;
 
-    private final RepositoryBuscarFalda faldaRepository;
+    private final RepositoryFalda faldaRepository;
 
-    private final RepositoryBuscarCamiseta camisetaRepository;
+    private final RepositorCamiseta camisetaRepository;
 
-    private final RepositoryBuscarRopaInterior ropaInteriorRepository;
+    private final RepositoryRopaInterior ropaInteriorRepository;
 
 
     /**
@@ -33,7 +33,7 @@ public class ServicioRopa {
      */
 
     @Autowired
-    public ServicioRopa(RepositoryBuscarPantalon pantalonRepository, RepositoryBuscarAbrigo abrigoRepository, RepositoryBuscarFalda faldaRepository, RepositoryBuscarCamiseta camisetaRepository, RepositoryBuscarRopaInterior ropaInteriorRepository) {
+    public ServicioRopa(RepositoryPantalon pantalonRepository, RepositoryAbrigo abrigoRepository, RepositoryFalda faldaRepository, RepositorCamiseta camisetaRepository, RepositoryRopaInterior ropaInteriorRepository) {
         this.pantalonRepository = pantalonRepository;
         this.abrigoRepository = abrigoRepository;
         this.faldaRepository = faldaRepository;

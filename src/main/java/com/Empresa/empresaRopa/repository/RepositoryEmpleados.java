@@ -1,4 +1,4 @@
-package com.Empresa.empresaRopa.controlador;
+package com.Empresa.empresaRopa.repository;
 
 import com.Empresa.empresaRopa.models.EmpleadoEntity;
 import org.springframework.data.repository.CrudRepository;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RepositoryBuscarEmpleados extends CrudRepository<EmpleadoEntity, Long > {
+public interface RepositoryEmpleados extends CrudRepository<EmpleadoEntity, Long > {
 //puedo hacer consultas personalizadas mediante  @Query("SELECT m FROM Modelo m WHERE m.atributo = :atributo")
 // @Query("SELECT m FROM Modelo m WHERE m.atributo = :atributo")
 //    List<Modelo> buscarPorAtributo(@Param("atributo") String atributo);

@@ -1,6 +1,6 @@
 package com.Empresa.empresaRopa.servicios;
 
-import com.Empresa.empresaRopa.controlador.RepositoryBuscarVentas;
+import com.Empresa.empresaRopa.repository.RepositoryVentas;
 import com.Empresa.empresaRopa.models.VentasEntity;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicioVentas {
 
-    private final RepositoryBuscarVentas repositoryBuscarVentas;
+    private final RepositoryVentas repositoryVentas;
 
-    public ServicioVentas(RepositoryBuscarVentas repositoryBuscarVentas) {
-        this.repositoryBuscarVentas = repositoryBuscarVentas;
+    public ServicioVentas(RepositoryVentas repositoryVentas) {
+        this.repositoryVentas = repositoryVentas;
     }
 
     public VentasEntity guardarVentas(VentasEntity ventas){
-        return this.repositoryBuscarVentas.save(ventas);
+        return this.repositoryVentas.save(ventas);
     }
 }
