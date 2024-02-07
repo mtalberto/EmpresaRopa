@@ -1,7 +1,7 @@
 package com.Empresa.empresaRopa.servicios;
 
 
-import com.Empresa.empresaRopa.models.*;
+import com.Empresa.empresaRopa.entitys.*;
 import com.Empresa.empresaRopa.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

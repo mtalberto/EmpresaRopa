@@ -1,6 +1,6 @@
 package com.Empresa.empresaRopa.repository;
 
-import com.Empresa.empresaRopa.models.EmpleadoEntity;
+import com.Empresa.empresaRopa.entitys.EmpleadoEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

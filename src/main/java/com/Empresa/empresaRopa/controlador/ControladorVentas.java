@@ -1,12 +1,15 @@
 package com.Empresa.empresaRopa.controlador;
 
-import com.Empresa.empresaRopa.models.*;
+import com.Empresa.empresaRopa.entitys.*;
 import com.Empresa.empresaRopa.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 //Controlador REST
 @RestController
+
 public class ControladorVentas {
     private final RepositoryVentas repositoryVentas;
     private final RepositoryEmpleados repositoryEmpleados;
@@ -22,7 +25,6 @@ public class ControladorVentas {
     private final RepositoryFalda repositoryFalda;
 
 
-
     public ControladorVentas(RepositoryVentas repositoryVentas, RepositoryEmpleados repositoryEmpleados, RepositoryAbrigo repositoryAbrigo, RepositorCamiseta repositorCamiseta, RepositoryRopaInterior repositoryRopaInterior, RepositoryPantalon repositoryPantalon, RepositoryFalda repositoryFalda) {
         this.repositoryVentas = repositoryVentas;
         this.repositoryEmpleados = repositoryEmpleados;
@@ -31,39 +33,58 @@ public class ControladorVentas {
         this.repositoryRopaInterior = repositoryRopaInterior;
         this.repositoryPantalon = repositoryPantalon;
         this.repositoryFalda = repositoryFalda;
+
     }
 //@RequestBody) se espera que sea un objeto Ventas, que se guarda en la base de datos.
     //debees recibir el id del empleado como parametro de la consulta
+
+    /**
+     * Boolean confirmar: Captura un parámetro de consulta opcional llamado confirmar. Si el parámetro
+     * no está presente en la solicitud, por defecto se asigna el valor false.
+     * @param venta
+     * @param idEmpleado
+     * @param idRopa
+     * @param tiporopa
+     * @return
+     * @throws Throwable
+     */
     @PostMapping("/ventas")
-    public VentasEntity addOneVenta(@RequestBody VentasEntity venta, @RequestParam Long id_empleado, @RequestParam  Long id_ropa,@RequestParam String tipo) {
-        EmpleadoEntity empleado= repositoryEmpleados.findById(id_empleado)
+    public VentasEntity addOneVenta(@RequestBody VentasEntity venta, @RequestParam Long idEmpleado,
+                                    @RequestParam Long idRopa,
+                                    @RequestParam String tiporopa) throws Throwable {
+        EmpleadoEntity empleado= repositoryEmpleados.findById(idEmpleado)
                         .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
             venta.setEmpleado(empleado);
 
-        switch (tipo.toLowerCase()) {
+        switch (tiporopa.toLowerCase()) {
             case "abrigo":
-                AbrigoEntity abrigo = repositoryAbrigo.findById(id_ropa)
-                        .orElseThrow(() -> new EntityNotFoundException("Abrigo no encontrado"));
+                AbrigoEntity abrigo = repositoryAbrigo.findById(idRopa)
+                                .orElseThrow(() -> new EntityNotFoundException("abrigo no encontrada"));
                 venta.setAbrigo(abrigo);
                 break;
             case "falda":
-                FaldaEntity falda = repositoryFalda.findById(id_ropa)
+                FaldaEntity falda = repositoryFalda.findById(idRopa)
                         .orElseThrow(() -> new EntityNotFoundException("Falda no encontrada"));
                 venta.setFalda(falda);
                 break;
             case "camiseta":
-                CamisetaEntity camiseta = repositorCamiseta.findById(id_ropa)
+                CamisetaEntity camiseta = repositorCamiseta.findById(idRopa)
                         .orElseThrow(() -> new EntityNotFoundException("Camiseta no encontrada"));
                 venta.setCamiseta(camiseta);
                 break;
 
             case "pantalon":
-                PantalonEntity pantalon = repositoryPantalon.findById(id_ropa)
-                        .orElseThrow(() -> new EntityNotFoundException("pantalon no encontrado"));
+                PantalonEntity pantalon = null;
+                try {
+                    pantalon = repositoryPantalon.findById(idRopa)
+                            .orElseThrow(() -> new EntityNotFoundException("pantalon no encontrado"));
+                } catch (Throwable e) {
+                    throw new RuntimeException(e);
+                }
                 venta.setPantalon(pantalon);
                 break;
             case "ropainterior":
-                RopaInteriorEntity ropaInterior = repositoryRopaInterior.findById(id_ropa)
+                RopaInteriorEntity ropaInterior = repositoryRopaInterior.findById(idRopa)
                         .orElseThrow(() -> new EntityNotFoundException("ropa interior no encontrada"));
                 venta.setRopaInterior(ropaInterior);
                 break;
@@ -76,7 +97,10 @@ public class ControladorVentas {
     }
 
     @GetMapping("/ventas")
-    public Iterable<VentasEntity> findAllVenyas() {
+    /**
+     * @return ventas
+     */
+    public Iterable<VentasEntity> findAllVentas() {
 
         return this.repositoryVentas.findAll();
     }

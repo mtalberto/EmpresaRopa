@@ -1,4 +1,4 @@
-package com.Empresa.empresaRopa.models;
+package com.Empresa.empresaRopa.entitys;
 
 
 import jakarta.persistence.Column;

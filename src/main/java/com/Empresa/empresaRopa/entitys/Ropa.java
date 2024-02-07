@@ -1,4 +1,4 @@
-package com.Empresa.empresaRopa.models;
+package com.Empresa.empresaRopa.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -43,7 +43,7 @@ public abstract class Ropa {
     @NonNull
     private String nombre;
     @NonNull
-    private String cantidad;
+    private int cantidad;
 
     //podria pasar el atributo tipo aqui pero es para practicar
      /* sera en el controlador

@@ -1,7 +1,7 @@
 package com.Empresa.empresaRopa.servicios;
 
 import com.Empresa.empresaRopa.repository.RepositoryVentas;
-import com.Empresa.empresaRopa.models.VentasEntity;
+import com.Empresa.empresaRopa.entitys.VentasEntity;
 import org.springframework.stereotype.Service;
 
 /**

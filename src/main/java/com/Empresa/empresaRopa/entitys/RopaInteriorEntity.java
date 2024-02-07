@@ -1,4 +1,4 @@
-package com.Empresa.empresaRopa.models;
+package com.Empresa.empresaRopa.entitys;
 
 
 import jakarta.persistence.Column;
@@ -23,7 +23,7 @@ public class RopaInteriorEntity extends Ropa{
     @Column(nullable = false)
     private String tela;
     @NonNull
-        @OneToMany(mappedBy="ropaInterior")
+    @OneToMany(mappedBy="ropaInterior")
     private List<VentasEntity> ventas;
 
 }
