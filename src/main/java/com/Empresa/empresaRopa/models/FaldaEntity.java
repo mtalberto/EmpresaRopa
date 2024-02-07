@@ -22,6 +22,9 @@ public class FaldaEntity extends Ropa{
     @NonNull
     @Column(nullable = false)
     private String tela;
+
+    //one to many hace referencia al campo faldas de ventasentity
+    // en la relacion onetomany el lado muchos sera una coleccion
     @NonNull
     @OneToMany(mappedBy="falda")
     private List<VentasEntity> ventas;
