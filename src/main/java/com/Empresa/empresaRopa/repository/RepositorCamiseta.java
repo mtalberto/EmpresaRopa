@@ -5,8 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RepositorCamiseta extends CrudRepository<CamisetaEntity,Long > {
-    List<CamisetaEntity> findById(long id);
+public interface RepositorCamiseta extends RepositoryRopa {
+
 
 
 

@@ -5,8 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RepositoryRopaInterior extends CrudRepository<RopaInteriorEntity, Long> {
-    List<RopaInteriorEntity> findById(long id);
+public interface RepositoryRopaInterior extends RepositoryRopa {
+
 
 
 }

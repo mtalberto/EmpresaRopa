@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface RepositoryFalda extends CrudRepository<FaldaEntity, Long> {
+public interface RepositoryFalda extends RepositoryRopa {
     List<FaldaEntity> findById(long id);
 
 
