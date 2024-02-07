@@ -42,9 +42,10 @@ public class VentasEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fechaVenta;
 
-    //con la anotacion joinColumn no hace referenci a un atributo o de la entidad PantalonEEntity
+    //con la anotacion joinColumn no hace referencia un atributo o de la entidad PantalonEEntity
     //joincolum se usa en el lado many!!! no en lado one
     //faldaid sera un campo en tabla ventas
+    //falda aqui no es un listoset porque refleja el uno de la relacion
     @ManyToOne
     @JoinColumn(name = "falda_id", nullable =  true)//pongo true porque solo añadira una prenda cada vez
     private FaldaEntity falda;
