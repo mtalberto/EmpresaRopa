@@ -3,25 +3,27 @@ package com.Empresa.empresaRopa.controlador;
 import com.Empresa.empresaRopa.entitys.*;
 import com.Empresa.empresaRopa.repository.*;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 //Controlador REST
 @RestController
 
 public class ControladorVentas {
+    @Autowired
     private final RepositoryVentas repositoryVentas;
+    @Autowired
     private final RepositoryEmpleados repositoryEmpleados;
-
+    @Autowired
     private final RepositoryAbrigo repositoryAbrigo;
-
+    @Autowired
     private final RepositorCamiseta repositorCamiseta;
-
+    @Autowired
     private final RepositoryRopaInterior repositoryRopaInterior;
-
+    @Autowired
     private final RepositoryPantalon repositoryPantalon;
-
+    @Autowired
     private final RepositoryFalda repositoryFalda;
 
 
@@ -49,6 +51,7 @@ public class ControladorVentas {
      * @throws Throwable
      */
     @PostMapping("/ventas")
+
     public VentasEntity addOneVenta(@RequestBody VentasEntity venta, @RequestParam Long idEmpleado,
                                     @RequestParam Long idRopa,
                                     @RequestParam String tiporopa) throws Throwable {
@@ -100,6 +103,7 @@ public class ControladorVentas {
     /**
      * @return ventas
      */
+    @Transactional
     public Iterable<VentasEntity> findAllVentas() {
 
         return this.repositoryVentas.findAll();

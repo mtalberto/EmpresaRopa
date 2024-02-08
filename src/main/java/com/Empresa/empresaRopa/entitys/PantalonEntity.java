@@ -4,6 +4,7 @@ package com.Empresa.empresaRopa.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,5 +22,5 @@ public class PantalonEntity extends Ropa{
     private String tela;
     @NonNull
     @OneToMany(mappedBy="pantalon",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<VentasEntity> ventas;
+    private List<VentasEntity> ventasPantalon= new ArrayList<VentasEntity>();;
 }

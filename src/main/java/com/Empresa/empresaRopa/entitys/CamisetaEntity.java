@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,7 +35,7 @@ public class CamisetaEntity extends Ropa {
 
     @NonNull
     @OneToMany(mappedBy="camiseta",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<VentasEntity> ventas;
+    private List<VentasEntity> ventasCamiseta= new ArrayList<VentasEntity>();
 
 
 

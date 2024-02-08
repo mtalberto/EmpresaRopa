@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class AbrigoEntity extends Ropa {
 
     @NonNull
     @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<VentasEntity> ventas;
+    private List<VentasEntity> ventasAbrigo = new ArrayList<VentasEntity>();
 
     @NonNull()
     @Column(nullable = false)

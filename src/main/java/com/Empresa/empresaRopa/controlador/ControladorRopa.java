@@ -2,6 +2,8 @@ package com.Empresa.empresaRopa.controlador;
 
 import com.Empresa.empresaRopa.entitys.*;
 import com.Empresa.empresaRopa.repository.*;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,11 +14,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value="/Ropa")
 public class ControladorRopa {
-
+    @Autowired
     private final RepositorCamiseta repositorCamiseta;
+    @Autowired
     private final RepositoryFalda repositoryFalda;
+    @Autowired
     private final RepositoryPantalon repositoryPantalon;
+    @Autowired
     private final RepositoryRopaInterior repositoryRopaInterior;
+    @Autowired
     private final RepositoryAbrigo repositoryAbrigo;
 
 
@@ -31,6 +37,7 @@ public class ControladorRopa {
 
 
     @GetMapping("faldas")
+
     public Iterable<FaldaEntity> findAllFaldas() {
 
         return this.repositoryFalda.findAll();
@@ -43,6 +50,7 @@ public class ControladorRopa {
     }
 
     @GetMapping("abrigos")
+
     public Iterable<AbrigoEntity> findAllAbrigos() {
 
         return this.repositoryAbrigo.findAll();
@@ -55,6 +63,7 @@ public class ControladorRopa {
     }
 
     @GetMapping("camisetas")
+
     public Iterable<CamisetaEntity> findAllCamisetas() {
 
         return  this.repositorCamiseta.findAll();
@@ -66,6 +75,7 @@ public class ControladorRopa {
         return  this.repositorCamiseta.save(camisetaEntity);
     }
     @GetMapping("ropaInterior")
+
     public Iterable<RopaInteriorEntity> findAllRopaInterior() {
 
         return this.repositoryRopaInterior.findAll();
@@ -79,6 +89,7 @@ public class ControladorRopa {
 
 
     @GetMapping("pantalones")
+
     public Iterable<PantalonEntity> findAllPantalones() {
 
         return this.repositoryPantalon.findAll();

@@ -2,12 +2,16 @@ package com.Empresa.empresaRopa.controlador;
 
 
 import com.Empresa.empresaRopa.entitys.EmpleadoEntity;
+import com.Empresa.empresaRopa.entitys.VentasEntity;
 import com.Empresa.empresaRopa.repository.RepositoryEmpleados;
+import com.Empresa.empresaRopa.repository.RepositoryVentas;
+import com.Empresa.empresaRopa.servicios.ServicioEmpleados;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -17,12 +21,19 @@ public class ControladorEmpleados {
     @Autowired
     private final RepositoryEmpleados repositoryEmpleados;
 
-    public ControladorEmpleados(RepositoryEmpleados repositoryEmpleados) {
+    @Autowired
+    private final ServicioEmpleados servicioEmpleados;
+
+
+    public ControladorEmpleados(RepositoryEmpleados repositoryEmpleados, ServicioEmpleados servicioEmpleados) {
         this.repositoryEmpleados = repositoryEmpleados;
+
+        this.servicioEmpleados = servicioEmpleados;
     }
 
 
     @GetMapping("/empleados")
+
     public Iterable<EmpleadoEntity> findAllEmpleados() {
 
         return this.repositoryEmpleados.findAll();
@@ -35,6 +46,7 @@ public class ControladorEmpleados {
     }
 
     @DeleteMapping("/empleado/{id}")
+
     public ResponseEntity<Boolean> deleteEmpleado(@PathVariable Long id){
         Optional<EmpleadoEntity> empleado=repositoryEmpleados.findById(id);
         if (!empleado.isPresent()) {
@@ -46,6 +58,7 @@ public class ControladorEmpleados {
 
 
     @PutMapping("/empleado/{id}")
+
     public ResponseEntity<EmpleadoEntity> updateEmpleado(@PathVariable Long id,@RequestBody EmpleadoEntity empleadoupdate){
         Optional<EmpleadoEntity> empleado=repositoryEmpleados.findById(id);
         if (!empleado.isPresent()) {
@@ -60,5 +73,11 @@ public class ControladorEmpleados {
         return  ResponseEntity.ok(empleadoupdate);
     }
 
-
+    @PutMapping("/empleado/{empId}/ventas/{ventaId}")
+    public EmpleadoEntity ventaEmpleado(
+            @PathVariable Long empId,
+            @PathVariable Long ventaId
+    ){
+        return servicioEmpleados.obtenerVentasAsociadasEmpleado(empId, ventaId);
+    }
 }

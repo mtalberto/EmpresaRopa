@@ -1,13 +1,14 @@
 package com.Empresa.empresaRopa.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.modelmapper.ModelMapper;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +22,7 @@ import java.util.List;
 public class EmpleadoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private long id;
 
@@ -39,7 +40,8 @@ public class EmpleadoEntity {
      */
     //@mappeby señalas el campo de ventas con el que tiene relacion
     @OneToMany(mappedBy = "empleado",fetch = FetchType.EAGER)
-    private List<VentasEntity> ventas;
+    @JsonIgnore
+    private List<VentasEntity> ventaEmpleado= new ArrayList<VentasEntity>();
 
     @Column(nullable = false)
     private String segundoApellido;

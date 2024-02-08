@@ -4,9 +4,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
+/**
+ * para un mayor control de la bd
+ * Cuando añades @EntityListeners(AuditingEntityListener.class) a una entidad,
+ * habilitas la capacidad de esta entidad para ser auditada automáticamente por Spring Data JPA.
+ * Esto significa que puedes utilizar
+ * anotaciones adicionales como @CreatedDate, @LastModifiedDate, @CreatedBy, y @LastModifiedBy
+ */
 @MappedSuperclass
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,9 +24,9 @@ import java.sql.Timestamp;
 // esto solo seria si ropa fuese una entity @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 //La anotación @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) es parte de la Java Persistence API (JPA), que se
 // utiliza para definir cómo se mapea una jerarquía de clases de Java a una base de datos relacional
-public abstract class Ropa {
+public abstract class Ropa  implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //TABLE_PER_CLASS hace una tabla de cada herencia
 

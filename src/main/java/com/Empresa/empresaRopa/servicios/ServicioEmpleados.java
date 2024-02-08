@@ -1,10 +1,17 @@
 package com.Empresa.empresaRopa.servicios;
 
 
-import com.Empresa.empresaRopa.repository.RepositoryEmpleados;
 import com.Empresa.empresaRopa.entitys.EmpleadoEntity;
+import com.Empresa.empresaRopa.entitys.VentasEntity;
+import com.Empresa.empresaRopa.repository.RepositoryEmpleados;
+import com.Empresa.empresaRopa.repository.RepositoryVentas;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @Service
@@ -28,13 +35,39 @@ public class ServicioEmpleados {
     //inyecta las dependecias de repository o lo que es lo mismo la instancia
     @Autowired
     private final RepositoryEmpleados repositoryEmpleados;
+    private final RepositoryVentas repositoryVentas;
 
-    public ServicioEmpleados(RepositoryEmpleados repositoryEmpleados) {
+    public ServicioEmpleados(RepositoryEmpleados repositoryEmpleados, RepositoryVentas repositoryVentas) {
         this.repositoryEmpleados = repositoryEmpleados;
+        this.repositoryVentas = repositoryVentas;
     }
 
 
     public EmpleadoEntity guardarEmpleados( EmpleadoEntity empleado){
        return  this.repositoryEmpleados.save(empleado);
+    }
+    public EmpleadoEntity obtenerVentasAsociadasEmpleado(Long idempl,Long ventaId){
+        Optional<EmpleadoEntity> empleadoOpt = repositoryEmpleados.findById(idempl);
+        Optional<VentasEntity> ventaOpt = repositoryVentas.findById(ventaId);
+
+        if (!empleadoOpt.isPresent()) {
+            throw new EntityNotFoundException("Empleado no encontrado con ID: " + idempl);
+        }
+
+        if (!ventaOpt.isPresent()) {
+            throw new EntityNotFoundException("Venta no encontrada con ID: " + ventaId);
+        }
+
+        EmpleadoEntity empleado = empleadoOpt.get();
+        VentasEntity venta = ventaOpt.get();
+
+        List<VentasEntity> listaventas = empleado.getVentaEmpleado();
+        if (listaventas == null) {
+            listaventas = new ArrayList<>();
+        }
+        listaventas.add(venta);
+        empleado.setVentaEmpleado(listaventas);
+
+        return repositoryEmpleados.save(empleado);
     }
 }
