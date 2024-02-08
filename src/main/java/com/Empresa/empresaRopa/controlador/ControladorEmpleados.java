@@ -23,7 +23,7 @@ public class ControladorEmpleados {
 
 
     @GetMapping("/empleados")
-    public Iterable<EmpleadoEntity> findAllEmploye() {
+    public Iterable<EmpleadoEntity> findAllEmpleados() {
 
         return this.repositoryEmpleados.findAll();
     }

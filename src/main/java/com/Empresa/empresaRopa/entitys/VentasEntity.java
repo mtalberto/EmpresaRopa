@@ -27,7 +27,7 @@ public class VentasEntity {
     private long id;
 
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "empleado_id")
 
     private EmpleadoEntity empleado;
