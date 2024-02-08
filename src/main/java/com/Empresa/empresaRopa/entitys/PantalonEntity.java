@@ -20,6 +20,6 @@ public class PantalonEntity extends Ropa{
     @Column(nullable = false)
     private String tela;
     @NonNull
-    @OneToMany(mappedBy="pantalon",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="pantalon",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<VentasEntity> ventas;
 }

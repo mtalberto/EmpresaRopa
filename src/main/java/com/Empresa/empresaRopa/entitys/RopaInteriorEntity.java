@@ -20,7 +20,7 @@ public class RopaInteriorEntity extends Ropa{
     @Column(nullable = false)
     private String tela;
     @NonNull
-    @OneToMany(mappedBy="ropaInterior",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="ropaInterior",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<VentasEntity> ventas;
 
 }

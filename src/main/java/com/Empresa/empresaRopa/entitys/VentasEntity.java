@@ -2,6 +2,7 @@ package com.Empresa.empresaRopa.entitys;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -22,18 +23,19 @@ public class VentasEntity {
     // especifica el nombre de la secuencia de base de datos que se utilizará
     // para generar los valores de la clave primaria.
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "empleado_id")
+
     private EmpleadoEntity empleado;
 
 
 
     //join colum solo se puede usar con entitys
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pantalon_id") // Permite valores nulos
     private PantalonEntity pantalon;
 
@@ -46,19 +48,19 @@ public class VentasEntity {
     //joincolum se usa en el lado many!!! no en lado one
     //faldaid sera un campo en tabla ventas
     //falda aqui no es un listoset porque refleja el uno de la relacion
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "falda_id", nullable =  true)//pongo true porque solo añadira una prenda cada vez
     private FaldaEntity falda;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "abrigo_id", nullable =  true)
     private AbrigoEntity abrigo;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "camiseta_id", nullable =  true)
     private CamisetaEntity camiseta;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ropainterior_id", nullable =  true)
     private RopaInteriorEntity ropaInterior;
 

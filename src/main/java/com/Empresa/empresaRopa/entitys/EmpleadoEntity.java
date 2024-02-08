@@ -1,6 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
@@ -20,12 +21,12 @@ import java.util.List;
 public class EmpleadoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
     private long id;
 
 
     @Column(nullable = false)
-
     private String primerApellido;
 
     /**
@@ -37,7 +38,7 @@ public class EmpleadoEntity {
      * Could not write JSON: failed to lazily initialize a collection of role:  de la tabla ventas
      */
     //@mappeby señalas el campo de ventas con el que tiene relacion
-    @OneToMany(mappedBy = "empleado",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "empleado",fetch = FetchType.LAZY)
     private List<VentasEntity> ventas;
 
     @Column(nullable = false)

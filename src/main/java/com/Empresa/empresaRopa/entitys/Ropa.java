@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 // utiliza para definir cómo se mapea una jerarquía de clases de Java a una base de datos relacional
 public abstract class Ropa {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     //TABLE_PER_CLASS hace una tabla de cada herencia
 

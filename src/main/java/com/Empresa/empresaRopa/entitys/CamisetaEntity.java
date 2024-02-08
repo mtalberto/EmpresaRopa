@@ -33,7 +33,7 @@ public class CamisetaEntity extends Ropa {
     private String botones;
 
     @NonNull
-    @OneToMany(mappedBy="camiseta",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="camiseta",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<VentasEntity> ventas;
 
 

@@ -21,7 +21,7 @@ public class AbrigoEntity extends Ropa {
     private String tela;
 
     @NonNull
-    @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<VentasEntity> ventas;
 
     @NonNull()
