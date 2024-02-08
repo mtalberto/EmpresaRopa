@@ -42,7 +42,7 @@ public abstract class Ropa {
 
     @NonNull
     private String nombre;
-    @NonNull
+
     private int cantidad;
 
     //podria pasar el atributo tipo aqui pero es para practicar

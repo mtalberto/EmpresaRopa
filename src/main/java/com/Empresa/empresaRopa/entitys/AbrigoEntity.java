@@ -1,10 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -24,7 +21,7 @@ public class AbrigoEntity extends Ropa {
     private String tela;
 
     @NonNull
-    @OneToMany(mappedBy="abrigo")
+    @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER)
     private List<VentasEntity> ventas;
 
     @NonNull()

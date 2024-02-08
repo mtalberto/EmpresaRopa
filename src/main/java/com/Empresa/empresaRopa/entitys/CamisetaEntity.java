@@ -1,10 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -36,7 +33,7 @@ public class CamisetaEntity extends Ropa {
     private String botones;
 
     @NonNull
-    @OneToMany(mappedBy="camiseta")
+    @OneToMany(mappedBy="camiseta",fetch = FetchType.EAGER)
     private List<VentasEntity> ventas;
 
 

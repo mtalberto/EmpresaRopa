@@ -1,10 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -26,7 +23,7 @@ public class FaldaEntity extends Ropa{
     //one to many hace referencia al campo faldas de ventasentity
     // en la relacion onetomany el lado muchos sera una coleccion
     @NonNull
-    @OneToMany(mappedBy="falda")
+    @OneToMany(mappedBy="falda",fetch = FetchType.EAGER)
     private List<VentasEntity> ventas;
 
 
