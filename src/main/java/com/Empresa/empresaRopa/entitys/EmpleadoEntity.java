@@ -38,7 +38,7 @@ public class EmpleadoEntity {
      * Could not write JSON: failed to lazily initialize a collection of role:  de la tabla ventas
      */
     //@mappeby señalas el campo de ventas con el que tiene relacion
-    @OneToMany(mappedBy = "empleado",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "empleado",fetch = FetchType.EAGER)
     private List<VentasEntity> ventas;
 
     @Column(nullable = false)

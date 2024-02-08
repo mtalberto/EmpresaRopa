@@ -27,7 +27,7 @@ public class VentasEntity {
     private long id;
 
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "empleado_id")
 
     private EmpleadoEntity empleado;
@@ -35,7 +35,7 @@ public class VentasEntity {
 
 
     //join colum solo se puede usar con entitys
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "pantalon_id") // Permite valores nulos
     private PantalonEntity pantalon;
 
@@ -48,19 +48,19 @@ public class VentasEntity {
     //joincolum se usa en el lado many!!! no en lado one
     //faldaid sera un campo en tabla ventas
     //falda aqui no es un listoset porque refleja el uno de la relacion
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "falda_id", nullable =  true)//pongo true porque solo añadira una prenda cada vez
     private FaldaEntity falda;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "abrigo_id", nullable =  true)
     private AbrigoEntity abrigo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "camiseta_id", nullable =  true)
     private CamisetaEntity camiseta;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "ropainterior_id", nullable =  true)
     private RopaInteriorEntity ropaInterior;
 
