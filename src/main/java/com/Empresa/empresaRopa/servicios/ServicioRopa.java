@@ -23,7 +23,6 @@ public class ServicioRopa {
 
     private final RepositorCamiseta camisetaRepository;
 
-    private final RepositoryRopaInterior ropaInteriorRepository;
 
 
     /**
@@ -33,12 +32,12 @@ public class ServicioRopa {
      */
 
     @Autowired
-    public ServicioRopa(RepositoryPantalon pantalonRepository, RepositoryAbrigo abrigoRepository, RepositoryFalda faldaRepository, RepositorCamiseta camisetaRepository, RepositoryRopaInterior ropaInteriorRepository) {
+    public ServicioRopa(RepositoryPantalon pantalonRepository, RepositoryAbrigo abrigoRepository, RepositoryFalda faldaRepository, RepositorCamiseta camisetaRepository) {
         this.pantalonRepository = pantalonRepository;
         this.abrigoRepository = abrigoRepository;
         this.faldaRepository = faldaRepository;
         this.camisetaRepository = camisetaRepository;
-        this.ropaInteriorRepository = ropaInteriorRepository;
+
     }
 
     public PantalonEntity guardarPantalon(PantalonEntity pantalon) {
@@ -52,9 +51,7 @@ public class ServicioRopa {
     public FaldaEntity guardarFalda(FaldaEntity falda){
         return faldaRepository.save(falda);
     }
-    public RopaInteriorEntity guardarRopaInterior(RopaInteriorEntity ropaInterior){
-        return ropaInteriorRepository.save(ropaInterior);
-    }
+
     public CamisetaEntity guardaCamiseta(CamisetaEntity camiseta){
         return camisetaRepository.save(camiseta);
     }

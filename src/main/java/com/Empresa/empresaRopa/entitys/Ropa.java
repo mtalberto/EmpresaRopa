@@ -2,7 +2,9 @@ package com.Empresa.empresaRopa.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.apache.logging.log4j.message.Message;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -53,6 +55,12 @@ public abstract class Ropa  implements Serializable {
     private String nombre;
 
     private int cantidad;
+
+    @NotNull(message = "inserte precio")
+    private int tela;
+
+    @NotNull(message = "inserte precio")
+    private int precio;
 
     //podria pasar el atributo tipo aqui pero es para practicar
      /* sera en el controlador

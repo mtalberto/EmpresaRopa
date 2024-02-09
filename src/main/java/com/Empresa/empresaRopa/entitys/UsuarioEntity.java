@@ -1,9 +1,9 @@
 package com.Empresa.empresaRopa.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.modelmapper.ModelMapper;
 
@@ -19,16 +19,44 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Table(name = "Empleados")
-public class EmpleadoEntity {
-
+public class UsuarioEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
+
+    @Column(nullable = false)
+    @NotNull(message = "falta el primer apellido")
+    private String primerApellido;
 
 
     @Column(nullable = false)
-    private String primerApellido;
+    @NotNull(message = "falta el segundo apellido")
+    private String segundoApellido;
+
+
+    @Column(nullable = false,length =9)
+    @NotNull(message = "falta el dni apellido")
+    private String dni;
+
+    //Email
+    @Email
+    @Column(nullable = false)
+    @NotNull(message = "falta el email apellido")
+    private String email;
+
+    @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private Timestamp fechaNacimiento;
+
+
+    @Column(nullable = false)
+    @NotNull(message = "falta el email apellido")
+    private String usuario;
+
+    @Column(nullable = false)
+    @NotNull(message = "falta el email apellido")
+    private String contraseña;
+
 
     /**
      * cambia la estrategia de carga de la colección asociada de carga perezosa
@@ -40,41 +68,18 @@ public class EmpleadoEntity {
      */
     //@mappeby señalas el campo de ventas con el que tiene relacion
     @OneToMany(mappedBy = "empleado",fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<VentasEntity> ventaEmpleado= new ArrayList<VentasEntity>();
-
-    @Column(nullable = false)
-    private String segundoApellido;
-
-    @Column(nullable = false,length =9)
-    private String dni;
+    private List<ComprasEntity> ventaEmpleado= new ArrayList<ComprasEntity>();
 
 
-    @Column(nullable = false)
-    private String nombre;
 
-    //Email
-
-    @Email
-    @Column(nullable = false)
-    private String email;
-
-
-    @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-
-    private Timestamp fechaContratado;
-
-    @Column(nullable = true)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private Timestamp fechaDespido;
 
     /**
      * ModelMapper es una librería de mapeo de objetos que automáticamente mapea objetos
      * a otros objetos mediante convenciones de nombres o configuraciones personalizadas.
      * @param source
-     */
-    public void copyDataFromEmpleado(EmpleadoEntity source) {
+    */
+
+    public void copyDataFromEmpleado(UsuarioEntity source) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.map(source, this);
     }

@@ -1,29 +1,30 @@
 package com.Empresa.empresaRopa.dto;
 
-import com.Empresa.empresaRopa.entitys.VentasEntity;
+import com.Empresa.empresaRopa.entitys.ComprasEntity;
 
 import java.sql.Timestamp;
 import java.util.List;
 
-public class EmpleadoDTO {
+public class UsuarioDTO {
 
 
     private long id;
-    private List<VentasEntity> ventaEmpleado;
+    private String nombreEmpleado;
+    private long cantidadVendida;
+    private List<ComprasEntity> ventaEmpleado;
     private String segundoApellido;
     private String dni;
-    private String nombre;
+
     private String email;
     private Timestamp fechaContratado;
     private Timestamp fechaDespido;
 
-    public EmpleadoDTO(long id, List<VentasEntity> ventaEmpleado, String segundoApellido, String dni, String nombre, String email, Timestamp fechaContratado, Timestamp fechaDespido) {
+    public UsuarioDTO(long id, List<ComprasEntity> ventaEmpleado, String nombreEmpleado, long cantidadVendida, String segundoApellido, String dni, String email, Timestamp fechaContratado, Timestamp fechaDespido) {
         this.id = id;
-        this.nombre = nombre;
-
+        this.nombreEmpleado = nombreEmpleado;
+        this.cantidadVendida = cantidadVendida;
         this.segundoApellido = segundoApellido;
         this.dni = dni;
-        this.nombre = nombre;
         this.email = email;
         this.fechaContratado = fechaContratado;
         this.fechaDespido = fechaDespido;
@@ -31,10 +32,11 @@ public class EmpleadoDTO {
 
 
 
-    public EmpleadoDTO(String nombre, List<VentasEntity> ventaEmpleado){
-        this.nombre = nombre;
-        this.nombre = nombre;
+    public UsuarioDTO(String nombreEmpleado, long cantidadVendida){
 
+        this.nombreEmpleado = nombreEmpleado;
+
+        this.cantidadVendida = cantidadVendida;
     }
     public long getId() {
         return id;
@@ -44,11 +46,11 @@ public class EmpleadoDTO {
         this.id = id;
     }
 
-    public List<VentasEntity> getVentaEmpleado() {
+    public List<ComprasEntity> getVentaEmpleado() {
         return ventaEmpleado;
     }
 
-    public void setVentaEmpleado(List<VentasEntity> ventaEmpleado) {
+    public void setVentaEmpleado(List<ComprasEntity> ventaEmpleado) {
         this.ventaEmpleado = ventaEmpleado;
     }
 
@@ -68,13 +70,7 @@ public class EmpleadoDTO {
         this.dni = dni;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getEmail() {
         return email;
@@ -104,13 +100,30 @@ public class EmpleadoDTO {
     public String toString() {
         return "EmpleadoDTO{" +
                 "id=" + id +
+                ", nombreEmpleado='" + nombreEmpleado + '\'' +
+                ", cantidadVendida=" + cantidadVendida +
                 ", ventaEmpleado=" + ventaEmpleado +
                 ", segundoApellido='" + segundoApellido + '\'' +
                 ", dni='" + dni + '\'' +
-                ", nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
                 ", fechaContratado=" + fechaContratado +
                 ", fechaDespido=" + fechaDespido +
                 '}';
+    }
+
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
+    }
+
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+
+    public long getCantidadVendida() {
+        return cantidadVendida;
+    }
+
+    public void setCantidadVendida(long cantidadVendida) {
+        this.cantidadVendida = cantidadVendida;
     }
 }

@@ -16,14 +16,11 @@ import java.util.List;
 @Setter
 public class AbrigoEntity extends Ropa {
 
-    @NonNull
-    @Column(nullable = false)
-    @NotNull(message = "el campo tela no puede estar vacio")
-    private String tela;
+   
 
     @NonNull
     @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<VentasEntity> ventasAbrigo = new ArrayList<VentasEntity>();
+    private List<ComprasEntity> ventasAbrigo = new ArrayList<ComprasEntity>();
 
     @NonNull()
     @Column(nullable = false)

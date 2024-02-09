@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 public class ControladorVentas {
     @Autowired
-    private final RepositoryVentas repositoryVentas;
+    private final RepositoryCompras repositoryCompras;
     @Autowired
-    private final RepositoryEmpleados repositoryEmpleados;
+    private final RepositoryUsuarios repositoryUsuarios;
     @Autowired
     private final RepositoryAbrigo repositoryAbrigo;
     @Autowired
@@ -27,14 +27,17 @@ public class ControladorVentas {
     private final RepositoryFalda repositoryFalda;
 
 
-    public ControladorVentas(RepositoryVentas repositoryVentas, RepositoryEmpleados repositoryEmpleados, RepositoryAbrigo repositoryAbrigo, RepositorCamiseta repositorCamiseta, RepositoryRopaInterior repositoryRopaInterior, RepositoryPantalon repositoryPantalon, RepositoryFalda repositoryFalda) {
-        this.repositoryVentas = repositoryVentas;
-        this.repositoryEmpleados = repositoryEmpleados;
+
+
+    public ControladorVentas(RepositoryCompras repositoryCompras, RepositoryUsuarios repositoryUsuarios, RepositoryAbrigo repositoryAbrigo, RepositorCamiseta repositorCamiseta, RepositoryRopaInterior repositoryRopaInterior, RepositoryPantalon repositoryPantalon, RepositoryFalda repositoryFalda) {
+        this.repositoryCompras = repositoryCompras;
+        this.repositoryUsuarios = repositoryUsuarios;
         this.repositoryAbrigo = repositoryAbrigo;
         this.repositorCamiseta = repositorCamiseta;
         this.repositoryRopaInterior = repositoryRopaInterior;
         this.repositoryPantalon = repositoryPantalon;
         this.repositoryFalda = repositoryFalda;
+
 
     }
 //@RequestBody) se espera que sea un objeto Ventas, que se guarda en la base de datos.
@@ -43,6 +46,7 @@ public class ControladorVentas {
     /**
      * Boolean confirmar: Captura un parámetro de consulta opcional llamado confirmar. Si el parámetro
      * no está presente en la solicitud, por defecto se asigna el valor false.
+     *
      * @param venta
      * @param idEmpleado
      * @param idRopa
@@ -52,17 +56,17 @@ public class ControladorVentas {
      */
     @PostMapping("/ventas")
 
-    public VentasEntity addOneVenta(@RequestBody VentasEntity venta, @RequestParam Long idEmpleado,
-                                    @RequestParam Long idRopa,
-                                    @RequestParam String tiporopa) throws Throwable {
-        EmpleadoEntity empleado= repositoryEmpleados.findById(idEmpleado)
-                        .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
-            venta.setEmpleado(empleado);
+    public ComprasEntity addOneVenta(@RequestBody ComprasEntity venta, @RequestParam Long idEmpleado,
+                                     @RequestParam Long idRopa,
+                                     @RequestParam String tiporopa) throws Throwable {
+        UsuarioEntity empleado = repositoryUsuarios.findById(idEmpleado)
+                .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
+        venta.setEmpleado(empleado);
 
         switch (tiporopa.toLowerCase()) {
             case "abrigo":
                 AbrigoEntity abrigo = repositoryAbrigo.findById(idRopa)
-                                .orElseThrow(() -> new EntityNotFoundException("abrigo no encontrada"));
+                        .orElseThrow(() -> new EntityNotFoundException("abrigo no encontrada"));
                 venta.setAbrigo(abrigo);
                 break;
             case "falda":
@@ -86,17 +90,11 @@ public class ControladorVentas {
                 }
                 venta.setPantalon(pantalon);
                 break;
-            case "ropainterior":
-                RopaInteriorEntity ropaInterior = repositoryRopaInterior.findById(idRopa)
-                        .orElseThrow(() -> new EntityNotFoundException("ropa interior no encontrada"));
-                venta.setRopaInterior(ropaInterior);
-                break;
-
 
             default:
                 throw new IllegalArgumentException("Tipo de prenda no soportado");
         }
-        return this.repositoryVentas.save(venta);
+        return this.repositoryCompras.save(venta);
     }
 
     @GetMapping("/ventas")
@@ -104,9 +102,11 @@ public class ControladorVentas {
      * @return ventas
      */
     @Transactional
-    public Iterable<VentasEntity> findAllVentas() {
+    public Iterable<ComprasEntity> findAllVentas() {
 
-        return this.repositoryVentas.findAll();
+        return this.repositoryCompras.findAll();
     }
+
+
 
 }

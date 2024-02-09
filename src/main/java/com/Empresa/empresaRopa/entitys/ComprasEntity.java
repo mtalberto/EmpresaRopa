@@ -1,10 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -13,14 +10,14 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "Ventas")
+@Table(name = "Compras")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 
-public class VentasEntity {
+public class ComprasEntity {
     //en la table many es donde tienes que poner manytoOne
     // especifica el nombre de la secuencia de base de datos que se utilizará
     // para generar los valores de la clave primaria.
@@ -32,9 +29,8 @@ public class VentasEntity {
 
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "empleado_id")
-    private EmpleadoEntity empleado ;
+    private UsuarioEntity empleado ;
 
 
 
@@ -63,10 +59,6 @@ public class VentasEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "camiseta_id", nullable =  true)
     private CamisetaEntity camiseta;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ropainterior_id", nullable =  true)
-    private RopaInteriorEntity ropaInterior;
 
 
     @Column(name = "cantidad", nullable =  false)

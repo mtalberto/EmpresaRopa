@@ -1,7 +1,7 @@
 package com.Empresa.empresaRopa.servicios;
 
-import com.Empresa.empresaRopa.repository.RepositoryVentas;
-import com.Empresa.empresaRopa.entitys.VentasEntity;
+import com.Empresa.empresaRopa.repository.RepositoryCompras;
+import com.Empresa.empresaRopa.entitys.ComprasEntity;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicioVentas {
 
-    private final RepositoryVentas repositoryVentas;
+    private final RepositoryCompras repositoryCompras;
 
-    public ServicioVentas(RepositoryVentas repositoryVentas) {
-        this.repositoryVentas = repositoryVentas;
+    public ServicioVentas(RepositoryCompras repositoryCompras) {
+        this.repositoryCompras = repositoryCompras;
     }
 
-    public VentasEntity guardarVentas(VentasEntity ventas){
-        return this.repositoryVentas.save(ventas);
+    public ComprasEntity guardarVentas(ComprasEntity ventas){
+        return this.repositoryCompras.save(ventas);
     }
 }

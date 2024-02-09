@@ -15,12 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PantalonEntity extends Ropa{
 
-
-
-    @NonNull
-    @Column(nullable = false)
-    private String tela;
     @NonNull
     @OneToMany(mappedBy="pantalon",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<VentasEntity> ventasPantalon= new ArrayList<VentasEntity>();;
+    private List<ComprasEntity> ventasPantalon= new ArrayList<ComprasEntity>();;
 }
