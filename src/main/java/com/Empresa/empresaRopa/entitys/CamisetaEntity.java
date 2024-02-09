@@ -17,7 +17,7 @@ import java.util.List;
 public class CamisetaEntity extends Ropa {
 
     @NonNull
-    @OneToMany(mappedBy="camiseta",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="camiseta",fetch = FetchType.EAGER)
     private List<ComprasEntity> ventasCamiseta= new ArrayList<ComprasEntity>();
 
 

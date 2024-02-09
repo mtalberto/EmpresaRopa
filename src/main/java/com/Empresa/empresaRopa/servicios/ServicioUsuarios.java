@@ -1,19 +1,10 @@
 package com.Empresa.empresaRopa.servicios;
 
 
-import com.Empresa.empresaRopa.dto.UsuarioDTO;
-import com.Empresa.empresaRopa.entitys.UsuarioEntity;
-import com.Empresa.empresaRopa.entitys.ComprasEntity;
-import com.Empresa.empresaRopa.repository.RepositoryUsuarios;
 import com.Empresa.empresaRopa.repository.RepositoryCompras;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+import com.Empresa.empresaRopa.repository.RepositoryUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * @Service
@@ -49,36 +40,5 @@ public class ServicioUsuarios {
         this.repositoryCompras = repositoryCompras;
     }
 
-    public List<UsuarioDTO> obtenerVentasPorEmpleado() {
-        return repositoryUsuarios.findVentasPorEmpleado();
-    }
-    @Transactional
-    public UsuarioEntity guardarEmpleados(UsuarioEntity empleado){
-       return  this.repositoryUsuarios.save(empleado);
-    }
-    @Transactional
-    public UsuarioEntity obtenerVentasAsociadasEmpleado(Long idempl, Long ventaId){
-        Optional<UsuarioEntity> empleadoOpt = repositoryUsuarios.findById(idempl);
-        Optional<ComprasEntity> ventaOpt = repositoryCompras.findById(ventaId);
 
-        if (!empleadoOpt.isPresent()) {
-            throw new EntityNotFoundException("Empleado no encontrado con ID: " + idempl);
-        }
-
-        if (!ventaOpt.isPresent()) {
-            throw new EntityNotFoundException("Venta no encontrada con ID: " + ventaId);
-        }
-
-        UsuarioEntity empleado = empleadoOpt.get();
-        ComprasEntity venta = ventaOpt.get();
-
-        List<ComprasEntity> listaventas = empleado.getVentaEmpleado();
-        if (listaventas == null) {
-            listaventas = new ArrayList<>();
-        }
-        listaventas.add(venta);
-        empleado.setVentaEmpleado(listaventas);
-
-        return repositoryUsuarios.save(empleado);
-    }
 }

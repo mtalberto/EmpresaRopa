@@ -2,13 +2,13 @@ package com.Empresa.empresaRopa.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.modelmapper.ModelMapper;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "Empleados")
+@Table(name = "Usuarios")
 public class UsuarioEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,11 @@ public class UsuarioEntity  {
     @Column(nullable = false)
     @NotNull(message = "falta el primer apellido")
     private String primerApellido;
+
+    @Column(nullable = false)
+    @NotNull(message = "falta el primer  nombre")
+    private String nombre;
+
 
 
     @Column(nullable = false)
@@ -45,16 +50,17 @@ public class UsuarioEntity  {
     private String email;
 
     @Column(nullable = false)
+    @NotNull(message = "falta la fecha")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fechaNacimiento;
 
 
     @Column(nullable = false)
-    @NotNull(message = "falta el email apellido")
+    @NotNull(message = "falta el usuario")
     private String usuario;
 
     @Column(nullable = false)
-    @NotNull(message = "falta el email apellido")
+    @NotNull(message = "falta el contraseña")
     private String contraseña;
 
 
@@ -67,8 +73,9 @@ public class UsuarioEntity  {
      * Could not write JSON: failed to lazily initialize a collection of role:  de la tabla ventas
      */
     //@mappeby señalas el campo de ventas con el que tiene relacion
-    @OneToMany(mappedBy = "empleado",fetch = FetchType.EAGER)
-    private List<ComprasEntity> ventaEmpleado= new ArrayList<ComprasEntity>();
+    @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+    private List<ComprasEntity> comprasUsuario;
+
 
 
 

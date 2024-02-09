@@ -4,7 +4,6 @@ package com.Empresa.empresaRopa.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +20,7 @@ public class FaldaEntity extends Ropa{
     // en la relacion onetomany el lado muchos sera una coleccion
     @NonNull
     @OneToMany(mappedBy="falda",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<ComprasEntity> ventasFalda = new ArrayList<ComprasEntity>();
+    private List<ComprasEntity> ventasFalda ;
 
 
 

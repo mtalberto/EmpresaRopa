@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class ServicioVentas {
+public class ServicioCompras {
 
     private final RepositoryCompras repositoryCompras;
 
-    public ServicioVentas(RepositoryCompras repositoryCompras) {
+    public ServicioCompras(RepositoryCompras repositoryCompras) {
         this.repositoryCompras = repositoryCompras;
     }
 

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.apache.logging.log4j.message.Message;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -52,12 +51,13 @@ public abstract class Ropa  implements Serializable {
     private String tiporopa;
 
     @NonNull
+    @NotNull(message = "inserte nombre")
     private String nombre;
-
+    @NotNull(message = "inserte cantidad")
     private int cantidad;
 
-    @NotNull(message = "inserte precio")
-    private int tela;
+    @NotNull(message = "inserte tela")
+    private String tela;
 
     @NotNull(message = "inserte precio")
     private int precio;

@@ -1,10 +1,13 @@
 package com.Empresa.empresaRopa.controlador;
 
 import com.Empresa.empresaRopa.entitys.*;
-import com.Empresa.empresaRopa.repository.*;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.Empresa.empresaRopa.repository.RepositorCamiseta;
+import com.Empresa.empresaRopa.repository.RepositoryAbrigo;
+import com.Empresa.empresaRopa.repository.RepositoryFalda;
+import com.Empresa.empresaRopa.repository.RepositoryPantalon;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  *  @RestController [3], implementa una API REST
@@ -14,21 +17,18 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value="/Ropa")
 public class ControladorRopa {
-    @Autowired
+
     private final RepositorCamiseta repositorCamiseta;
-    @Autowired
+
     private final RepositoryFalda repositoryFalda;
-    @Autowired
+
     private final RepositoryPantalon repositoryPantalon;
-    @Autowired
-    private final RepositoryRopaInterior repositoryRopaInterior;
-    @Autowired
+
     private final RepositoryAbrigo repositoryAbrigo;
 
 
-    public ControladorRopa(RepositoryFalda repositoryFalda, RepositorCamiseta repositorCamiseta, RepositoryPantalon repositoryPantalon, RepositoryAbrigo repositoryAbrigo, RepositoryRopaInterior repositoryRopaInterior) {
+    public ControladorRopa(RepositoryFalda repositoryFalda, RepositorCamiseta repositorCamiseta, RepositoryPantalon repositoryPantalon, RepositoryAbrigo repositoryAbrigo) {
         this.repositoryFalda = repositoryFalda;
-        this.repositoryRopaInterior = repositoryRopaInterior;
         this.repositoryPantalon = repositoryPantalon;
         this.repositoryAbrigo = repositoryAbrigo;
         this.repositorCamiseta = repositorCamiseta;
@@ -36,66 +36,55 @@ public class ControladorRopa {
     }
 
 
-    @GetMapping("faldas")
+    @GetMapping("/ListaFaldas")
 
-    public Iterable<FaldaEntity> findAllFaldas() {
+    public List<FaldaEntity> findAllFaldas() {
 
-        return this.repositoryFalda.findAll();
+        return (List<FaldaEntity>) this.repositoryFalda.findAll();
     }
 
-    @PostMapping("faldas")
+    @PostMapping("/AñadirFaldas")
     public Ropa addOneRopa(@RequestBody FaldaEntity faldaEntity) {
         
         return this.repositoryFalda.save(faldaEntity);
     }
 
-    @GetMapping("abrigos")
+    @GetMapping("/ListaAbrigos")
 
     public Iterable<AbrigoEntity> findAllAbrigos() {
 
         return this.repositoryAbrigo.findAll();
     }
 
-    @PostMapping("abrigos")
+    @PostMapping("/AñadirAbrigo")
     public Ropa addOneRopa(@RequestBody AbrigoEntity abrigoEntity) {
         System.out.println("Recibida abrigo: " + abrigoEntity);
         return  this.repositoryAbrigo.save(abrigoEntity);
     }
 
-    @GetMapping("camisetas")
+    @GetMapping("/ListaCamisetas")
 
     public Iterable<CamisetaEntity> findAllCamisetas() {
 
         return  this.repositorCamiseta.findAll();
     }
 
-    @PostMapping("camisetas")
+    @PostMapping("/AñadirCamisetas")
     public Ropa addOneRopa(@RequestBody CamisetaEntity camisetaEntity) {
 
         return  this.repositorCamiseta.save(camisetaEntity);
     }
-    @GetMapping("ropaInterior")
-
-    public Iterable<RopaInteriorEntity> findAllRopaInterior() {
-
-        return this.repositoryRopaInterior.findAll();
-    }
-
-    @PostMapping("ropaInterior")
-    public Ropa addOneRopa(@RequestBody RopaInteriorEntity ropaInteriorEntity) {
-
-        return  this.repositoryRopaInterior.save(ropaInteriorEntity);
-    }
 
 
-    @GetMapping("pantalones")
+
+    @GetMapping("/ListaPantalones")
 
     public Iterable<PantalonEntity> findAllPantalones() {
 
         return this.repositoryPantalon.findAll();
     }
 
-    @PostMapping("pantalones")
+    @PostMapping("/Añadir/Pantalones")
     public Ropa addOneRopa(@RequestBody PantalonEntity pantalonEntity) {
 
         return  this.repositoryPantalon.save(pantalonEntity);

@@ -1,10 +1,12 @@
 package com.Empresa.empresaRopa.entitys;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,6 +18,6 @@ import java.util.List;
 public class PantalonEntity extends Ropa{
 
     @NonNull
-    @OneToMany(mappedBy="pantalon",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ComprasEntity> ventasPantalon= new ArrayList<ComprasEntity>();;
+    @OneToMany(mappedBy="pantalon",fetch = FetchType.EAGER)
+    private List<ComprasEntity> ventasPantalon;
 }

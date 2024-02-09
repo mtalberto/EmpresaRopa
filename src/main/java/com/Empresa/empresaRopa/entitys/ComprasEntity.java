@@ -3,7 +3,7 @@ package com.Empresa.empresaRopa.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-
+import jakarta.transaction.Transactional;
 import lombok.*;
 
 import java.sql.Timestamp;
@@ -25,18 +25,15 @@ public class ComprasEntity {
     // secuanice lo hace para mejorar el rendimiento
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long idCompra;
 
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
     @ManyToOne
-    @JoinColumn(name = "empleado_id")
-    private UsuarioEntity empleado ;
+    @JoinColumn(name = "usuarioId")
+    private UsuarioEntity usuario;
 
-
-
-    //join colum solo se puede usar con entitys
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "pantalon_id",nullable =  true) // Permite valores nulos
+    @JoinColumn(name = "pantalonId",nullable =  true) // Permite valores nulos
     private PantalonEntity pantalon;
 
     @NonNull
@@ -49,20 +46,24 @@ public class ComprasEntity {
     //faldaid sera un campo en tabla ventas
     //falda aqui no es un listoset porque refleja el uno de la relacion
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "falda_id", nullable =  true)//pongo true porque solo añadira una prenda cada vez
+    @JoinColumn(name = "faldaId", nullable =  true)//pongo true porque solo añadira una prenda cada vez
     private FaldaEntity falda;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "abrigo_id", nullable =  true)
+    @JoinColumn(name = "abrigoId", nullable =  true)
     private AbrigoEntity abrigo;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "camiseta_id", nullable =  true)
+
+    @JoinColumn(name = "camisetaId", nullable =  true)
     private CamisetaEntity camiseta;
 
 
     @Column(name = "cantidad", nullable =  false)
     private Integer cantidad;
+
+
+
 
 
 

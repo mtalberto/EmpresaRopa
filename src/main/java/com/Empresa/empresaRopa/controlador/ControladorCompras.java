@@ -4,37 +4,38 @@ import com.Empresa.empresaRopa.entitys.*;
 import com.Empresa.empresaRopa.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 //Controlador REST
 @RestController
 
-public class ControladorVentas {
-    @Autowired
+public class ControladorCompras {
+
     private final RepositoryCompras repositoryCompras;
-    @Autowired
+
     private final RepositoryUsuarios repositoryUsuarios;
-    @Autowired
+
     private final RepositoryAbrigo repositoryAbrigo;
-    @Autowired
+
     private final RepositorCamiseta repositorCamiseta;
-    @Autowired
-    private final RepositoryRopaInterior repositoryRopaInterior;
-    @Autowired
+
+
+
     private final RepositoryPantalon repositoryPantalon;
-    @Autowired
+
     private final RepositoryFalda repositoryFalda;
 
 
 
 
-    public ControladorVentas(RepositoryCompras repositoryCompras, RepositoryUsuarios repositoryUsuarios, RepositoryAbrigo repositoryAbrigo, RepositorCamiseta repositorCamiseta, RepositoryRopaInterior repositoryRopaInterior, RepositoryPantalon repositoryPantalon, RepositoryFalda repositoryFalda) {
+    public ControladorCompras(RepositoryCompras repositoryCompras, RepositoryUsuarios repositoryUsuarios, RepositoryAbrigo repositoryAbrigo, RepositorCamiseta repositorCamiseta, RepositoryPantalon repositoryPantalon, RepositoryFalda repositoryFalda) {
         this.repositoryCompras = repositoryCompras;
         this.repositoryUsuarios = repositoryUsuarios;
         this.repositoryAbrigo = repositoryAbrigo;
         this.repositorCamiseta = repositorCamiseta;
-        this.repositoryRopaInterior = repositoryRopaInterior;
+
         this.repositoryPantalon = repositoryPantalon;
         this.repositoryFalda = repositoryFalda;
 
@@ -54,14 +55,13 @@ public class ControladorVentas {
      * @return
      * @throws Throwable
      */
-    @PostMapping("/ventas")
-
-    public ComprasEntity addOneVenta(@RequestBody ComprasEntity venta, @RequestParam Long idEmpleado,
+    @PostMapping("/Compras/{idUsuario}/{idRopa}/{tiporopa}")
+    public ComprasEntity addOneCompra(@RequestBody ComprasEntity venta, @RequestParam Long idUsuario,
                                      @RequestParam Long idRopa,
                                      @RequestParam String tiporopa) throws Throwable {
-        UsuarioEntity empleado = repositoryUsuarios.findById(idEmpleado)
+        UsuarioEntity usuario = repositoryUsuarios.findById(idUsuario)
                 .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
-        venta.setEmpleado(empleado);
+        venta.setUsuario(usuario );
 
         switch (tiporopa.toLowerCase()) {
             case "abrigo":
@@ -97,14 +97,9 @@ public class ControladorVentas {
         return this.repositoryCompras.save(venta);
     }
 
-    @GetMapping("/ventas")
-    /**
-     * @return ventas
-     */
-    @Transactional
-    public Iterable<ComprasEntity> findAllVentas() {
-
-        return this.repositoryCompras.findAll();
+    @GetMapping("/ListaCompras/{idUser}")
+    public List<ComprasEntity> findAllComprasByUserId(@PathVariable Long idUser) {
+        return this.repositoryCompras.findByUsuarioId(idUser);
     }
 
 
