@@ -56,9 +56,9 @@ public class ControladorCompras {
      * @throws Throwable
      */
     @PostMapping("/Compras/{idUsuario}/{idRopa}/{tiporopa}")
-    public ComprasEntity addOneCompra(@RequestBody ComprasEntity venta, @RequestParam Long idUsuario,
-                                     @RequestParam Long idRopa,
-                                     @RequestParam String tiporopa) throws Throwable {
+    public ComprasEntity addOneCompra(@RequestBody ComprasEntity venta, @PathVariable Long idUsuario,
+                                      @PathVariable Long idRopa,
+                                      @PathVariable String tiporopa) throws Throwable {
         UsuarioEntity usuario = repositoryUsuarios.findById(idUsuario)
                 .orElseThrow(() -> new EntityNotFoundException("Empleado no encontrado"));
         venta.setUsuario(usuario );
