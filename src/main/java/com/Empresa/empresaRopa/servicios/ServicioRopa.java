@@ -41,18 +41,22 @@ public class ServicioRopa {
     }
 
     public PantalonEntity guardarPantalon(PantalonEntity pantalon) {
+
         return pantalonRepository.save(pantalon);
     }
 
     public AbrigoEntity guardarAbrigo(AbrigoEntity abrigo){
+
         return abrigoRepository.save(abrigo);
     }
 
     public FaldaEntity guardarFalda(FaldaEntity falda){
+
         return faldaRepository.save(falda);
     }
 
     public CamisetaEntity guardaCamiseta(CamisetaEntity camiseta){
+
         return camisetaRepository.save(camiseta);
     }
 

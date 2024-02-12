@@ -13,7 +13,7 @@ import java.util.List;
 //Controlador REST
 @RestController
 public class ControladorCompras {
-
+//no pongo autowired por que ahora lo hace desde el contructor
     private final RepositoryCompras repositoryCompras;
 
     private final RepositoryUsuarios repositoryUsuarios;

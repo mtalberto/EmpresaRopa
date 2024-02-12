@@ -4,6 +4,8 @@ package com.Empresa.empresaRopa.controlador;
 import com.Empresa.empresaRopa.entitys.UsuarioEntity;
 import com.Empresa.empresaRopa.repository.RepositoryUsuarios;
 import com.Empresa.empresaRopa.servicios.ServicioUsuarios;
+import com.Empresa.empresaRopa.servicios.UsuarioDTO;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,30 +32,32 @@ public class ControladorUsuarios {
 
 
     @GetMapping("/ListaUsuarios")
-    @ResponseBody
+
     public List<UsuarioEntity> findAllUsuarios() {
 
         return (List<UsuarioEntity>) this.repositoryUsuarios.findAll();
     }
 
+    //obterner usuario por nombreusuario y email
+    //usar tokens
+    @GetMapping("/BuscarUsuario")
+    public ResponseEntity<Optional<UsuarioDTO>> obtenerUsuarioPorNombreYEmail(@Valid @RequestParam String nombreUsuario, @RequestParam String email) {
+        Optional<UsuarioDTO> usuarioDTO = servicioUsuarios.obtenerUsuarioPorNombreUsuarioYEmail(nombreUsuario, email);
+        if (usuarioDTO != null) {
+            return ResponseEntity.ok(usuarioDTO);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-    @GetMapping("/Usuario/{idUser}")
-    @ResponseBody
-    public Optional<UsuarioEntity> findUsuarios(@PathVariable UsuarioEntity usuario) {
-
-        return  this.repositoryUsuarios.findById(usuario.getId());
+    @PostMapping("/NuevoUsuario") // Define la ruta específica para crear un nuevo usuario
+    public ResponseEntity<UsuarioDTO> crearUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+        UsuarioDTO usuarioCreado = servicioUsuarios.crearUsuario(usuarioDTO);
+        return ResponseEntity.ok(usuarioCreado); // Devuelve el usuario creado con un estado HTTP 200 OK
     }
 
 
 
-
-
-    @PostMapping("/NuevoUsuario")
-    @ResponseBody
-    public UsuarioEntity addUsuario(@RequestBody UsuarioEntity usuarioEntity){
-
-        return this.repositoryUsuarios.save(usuarioEntity);
-    }
 
     @DeleteMapping("/Usuario/{idUser}")
 

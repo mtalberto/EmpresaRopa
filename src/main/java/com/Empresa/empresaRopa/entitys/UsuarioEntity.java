@@ -1,15 +1,13 @@
 package com.Empresa.empresaRopa.entitys;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.modelmapper.ModelMapper;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -31,9 +29,8 @@ public class UsuarioEntity {
     private String primerApellido;
 
     @Column(nullable = false)
-    @NotNull(message = "falta el primer  nombre")
+    @NotBlank(message = "falta el nombre")
     private String nombre;
-
 
 
     @Column(nullable = false)
@@ -41,9 +38,6 @@ public class UsuarioEntity {
     private String segundoApellido;
 
 
-    @Column(nullable = false,length =9)
-    @NotNull(message = "falta el dni apellido")
-    private String dni;
 
     //Email
     @Email
