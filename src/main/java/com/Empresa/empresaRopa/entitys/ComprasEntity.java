@@ -33,19 +33,19 @@ public class ComprasEntity  {
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
     @ManyToOne
     @JoinColumn(name = "usuarioId")
-    @JsonIgnore
+
     private UsuarioEntity usuario;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pantalonId",nullable =  true) // Permite valores nulos
-    @JsonIgnore
+
     private PantalonEntity pantalon;
 
     @NonNull
-    @Column(name = "fechaventa", nullable =  false)
+    @Column(name = "fechaCompra", nullable =  false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    @JsonIgnore
-    private Timestamp fechss2aVenta;
+
+    private Timestamp fechaCompra;
 
     //con la anotacion joinColumn no hace referencia un atributo o de la entidad PantalonEEntity
     //joincolum se usa en el lado many!!! no en lado one
@@ -53,17 +53,17 @@ public class ComprasEntity  {
     //falda aqui no es un listoset porque refleja el uno de la relacion
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "faldaId", nullable =  true)//pongo true porque solo añadira una prenda cada vez
-    @JsonIgnore
+
     private FaldaEntity falda;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "abrigoId", nullable =  true)
-    @JsonIgnore
+
     private AbrigoEntity abrigo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "camisetaId", nullable =  true)
-    @JsonIgnore
+
     private CamisetaEntity camiseta;
 
 
