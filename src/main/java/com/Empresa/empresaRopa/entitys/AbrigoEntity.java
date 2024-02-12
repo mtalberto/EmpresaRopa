@@ -1,6 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -19,7 +20,7 @@ public class AbrigoEntity extends Ropa {
 
     @NonNull
     @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ComprasEntity> ventasAbrigo ;
+    private List<ComprasEntity> comprasAbrigo ;
 
     @NonNull()
     @Column(nullable = false)

@@ -25,7 +25,7 @@ import java.sql.Timestamp;
 // esto solo seria si ropa fuese una entity @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 //La anotación @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS) es parte de la Java Persistence API (JPA), que se
 // utiliza para definir cómo se mapea una jerarquía de clases de Java a una base de datos relacional
-public abstract class Ropa  implements Serializable {
+public abstract class Ropa  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

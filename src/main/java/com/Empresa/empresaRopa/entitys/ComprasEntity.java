@@ -1,11 +1,14 @@
 package com.Empresa.empresaRopa.entitys;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import lombok.*;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 
@@ -17,7 +20,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @ToString
 
-public class ComprasEntity {
+public class ComprasEntity  {
     //en la table many es donde tienes que poner manytoOne
     // especifica el nombre de la secuencia de base de datos que se utilizará
     // para generar los valores de la clave primaria.
@@ -30,16 +33,19 @@ public class ComprasEntity {
     //mediante el joinColum se añadira una campo mas a la bd que hare de fk con empelados
     @ManyToOne
     @JoinColumn(name = "usuarioId")
+    @JsonIgnore
     private UsuarioEntity usuario;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pantalonId",nullable =  true) // Permite valores nulos
+    @JsonIgnore
     private PantalonEntity pantalon;
 
     @NonNull
     @Column(name = "fechaventa", nullable =  false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private Timestamp fechaVenta;
+    @JsonIgnore
+    private Timestamp fechss2aVenta;
 
     //con la anotacion joinColumn no hace referencia un atributo o de la entidad PantalonEEntity
     //joincolum se usa en el lado many!!! no en lado one
@@ -47,15 +53,17 @@ public class ComprasEntity {
     //falda aqui no es un listoset porque refleja el uno de la relacion
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "faldaId", nullable =  true)//pongo true porque solo añadira una prenda cada vez
+    @JsonIgnore
     private FaldaEntity falda;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "abrigoId", nullable =  true)
+    @JsonIgnore
     private AbrigoEntity abrigo;
 
     @ManyToOne(fetch = FetchType.EAGER)
-
     @JoinColumn(name = "camisetaId", nullable =  true)
+    @JsonIgnore
     private CamisetaEntity camiseta;
 
 

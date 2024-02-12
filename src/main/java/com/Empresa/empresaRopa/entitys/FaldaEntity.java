@@ -1,6 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class FaldaEntity extends Ropa{
     // en la relacion onetomany el lado muchos sera una coleccion
     @NonNull
     @OneToMany(mappedBy="falda",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+
     private List<ComprasEntity> ventasFalda ;
 
 

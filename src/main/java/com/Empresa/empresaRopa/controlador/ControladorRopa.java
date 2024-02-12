@@ -84,7 +84,7 @@ public class ControladorRopa {
         return this.repositoryPantalon.findAll();
     }
 
-    @PostMapping("/Añadir/Pantalones")
+    @PostMapping("/AñadirPantalones")
     public Ropa addOneRopa(@RequestBody PantalonEntity pantalonEntity) {
 
         return  this.repositoryPantalon.save(pantalonEntity);
