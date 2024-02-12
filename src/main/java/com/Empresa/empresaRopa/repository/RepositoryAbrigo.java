@@ -1,10 +1,9 @@
 package com.Empresa.empresaRopa.repository;
 
 import com.Empresa.empresaRopa.entitys.AbrigoEntity;
-import com.Empresa.empresaRopa.entitys.CamisetaEntity;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RepositoryAbrigo extends CrudRepository<AbrigoEntity, Long > {
+public interface RepositoryAbrigo extends JpaRepository<AbrigoEntity, Long > {
 
 
 

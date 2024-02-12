@@ -4,6 +4,7 @@ import java.util.List;
 
 public class RopaDTO {
 
+    private long id;
     private String talla;
 
     private String color;
@@ -17,6 +18,21 @@ public class RopaDTO {
     private int precio;
 
     private int cantidad;
+
+
+
+
+
+
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getTalla() {
         return talla;

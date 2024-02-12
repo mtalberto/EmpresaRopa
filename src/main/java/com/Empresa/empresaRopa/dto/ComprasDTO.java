@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ComprasDTO {
 
+    private long id;
     private String talla;
 
     private String color;
@@ -24,6 +25,15 @@ public class ComprasDTO {
     private String email;
 
     private Timestamp fechaCompra;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getTalla() {
         return talla;

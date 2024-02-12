@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+//Arquitectura expone los endpoints(rutas)
 //Controlador REST
 @RestController
-
 public class ControladorCompras {
 
     private final RepositoryCompras repositoryCompras;
@@ -47,7 +48,7 @@ public class ControladorCompras {
     /**
      * Boolean confirmar: Captura un parámetro de consulta opcional llamado confirmar. Si el parámetro
      * no está presente en la solicitud, por defecto se asigna el valor false.
-     *
+     *Metodos http post,get,put,delete
      * @param venta
      * @param idEmpleado
      * @param idRopa
@@ -55,6 +56,18 @@ public class ControladorCompras {
      * @return
      * @throws Throwable
      */
+
+    /**
+     * @ResponseBody es una anotación en Spring que se utiliza para indicar que el valor de retorno de un método de controlador debe ser enlazado al cuerpo de la respuesta web. Esto significa que Spring convertirá automáticamente el valor de retorno del método en formato JSON o
+     * XML (u otro formato de respuesta personalizado)
+     * @param venta
+     * @param idUsuario
+     * @param idRopa
+     * @param tiporopa
+     * @return
+     * @throws Throwable
+     */
+    @ResponseBody
     @PostMapping("/Compras/{idUsuario}/{idRopa}/{tiporopa}")
     public ComprasEntity addOneCompra(@RequestBody ComprasEntity venta, @PathVariable Long idUsuario,
                                       @PathVariable Long idRopa,
@@ -97,10 +110,6 @@ public class ControladorCompras {
         return this.repositoryCompras.save(venta);
     }
 
-    @GetMapping("/ListaCompras/{idUser}")
-    public List<ComprasEntity> findAllComprasByUserId(@PathVariable Long idUser) {
-        return this.repositoryCompras.findByUsuarioId(idUser);
-    }
 
 
 

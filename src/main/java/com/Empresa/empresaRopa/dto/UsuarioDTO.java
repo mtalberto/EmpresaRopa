@@ -7,7 +7,7 @@ import java.util.List;
 public class UsuarioDTO {
 
 
-
+    private long id;
     private String nombreUsuario;
     private List<ComprasDTO> ComprasUsuario;
     private String primerApellido;
@@ -15,7 +15,13 @@ public class UsuarioDTO {
     private String email;
 
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getNombreUsuario() {
         return nombreUsuario;

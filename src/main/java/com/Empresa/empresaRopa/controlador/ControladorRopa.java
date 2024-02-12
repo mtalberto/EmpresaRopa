@@ -37,39 +37,42 @@ public class ControladorRopa {
 
 
     @GetMapping("/ListaFaldas")
-
+    @ResponseBody
     public List<FaldaEntity> findAllFaldas() {
 
         return (List<FaldaEntity>) this.repositoryFalda.findAll();
     }
 
     @PostMapping("/AñadirFaldas")
+    @ResponseBody
     public Ropa addOneRopa(@RequestBody FaldaEntity faldaEntity) {
         
         return this.repositoryFalda.save(faldaEntity);
     }
 
     @GetMapping("/ListaAbrigos")
-
+    @ResponseBody
     public Iterable<AbrigoEntity> findAllAbrigos() {
 
         return this.repositoryAbrigo.findAll();
     }
 
     @PostMapping("/AñadirAbrigo")
+    @ResponseBody
     public Ropa addOneRopa(@RequestBody AbrigoEntity abrigoEntity) {
         System.out.println("Recibida abrigo: " + abrigoEntity);
         return  this.repositoryAbrigo.save(abrigoEntity);
     }
 
     @GetMapping("/ListaCamisetas")
-
+    @ResponseBody
     public Iterable<CamisetaEntity> findAllCamisetas() {
 
         return  this.repositorCamiseta.findAll();
     }
 
     @PostMapping("/AñadirCamisetas")
+    @ResponseBody
     public Ropa addOneRopa(@RequestBody CamisetaEntity camisetaEntity) {
 
         return  this.repositorCamiseta.save(camisetaEntity);
@@ -78,13 +81,14 @@ public class ControladorRopa {
 
 
     @GetMapping("/ListaPantalones")
-
+    @ResponseBody
     public Iterable<PantalonEntity> findAllPantalones() {
 
         return this.repositoryPantalon.findAll();
     }
 
     @PostMapping("/AñadirPantalones")
+    @ResponseBody
     public Ropa addOneRopa(@RequestBody PantalonEntity pantalonEntity) {
 
         return  this.repositoryPantalon.save(pantalonEntity);

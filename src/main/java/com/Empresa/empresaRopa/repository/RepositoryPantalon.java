@@ -1,11 +1,10 @@
 package com.Empresa.empresaRopa.repository;
 
 
-import com.Empresa.empresaRopa.entitys.CamisetaEntity;
 import com.Empresa.empresaRopa.entitys.PantalonEntity;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RepositoryPantalon extends CrudRepository<PantalonEntity, Long > {
+public interface RepositoryPantalon extends JpaRepository<PantalonEntity, Long > {
 
 
 

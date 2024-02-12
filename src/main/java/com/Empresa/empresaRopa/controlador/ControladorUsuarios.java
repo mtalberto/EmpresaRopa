@@ -30,7 +30,7 @@ public class ControladorUsuarios {
 
 
     @GetMapping("/ListaUsuarios")
-
+    @ResponseBody
     public List<UsuarioEntity> findAllUsuarios() {
 
         return (List<UsuarioEntity>) this.repositoryUsuarios.findAll();
@@ -38,6 +38,7 @@ public class ControladorUsuarios {
 
 
     @GetMapping("/Usuario/{idUser}")
+    @ResponseBody
     public Optional<UsuarioEntity> findUsuarios(@PathVariable UsuarioEntity usuario) {
 
         return  this.repositoryUsuarios.findById(usuario.getId());
@@ -48,6 +49,7 @@ public class ControladorUsuarios {
 
 
     @PostMapping("/NuevoUsuario")
+    @ResponseBody
     public UsuarioEntity addUsuario(@RequestBody UsuarioEntity usuarioEntity){
 
         return this.repositoryUsuarios.save(usuarioEntity);

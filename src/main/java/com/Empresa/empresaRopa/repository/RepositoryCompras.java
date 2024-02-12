@@ -2,11 +2,9 @@ package com.Empresa.empresaRopa.repository;
 
 
 import com.Empresa.empresaRopa.entitys.ComprasEntity;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+public interface RepositoryCompras extends JpaRepository<ComprasEntity,Long> {
 
-public interface RepositoryCompras extends CrudRepository<ComprasEntity,Long> {
 
-    List<ComprasEntity> findByUsuarioId(Long usuarioId);
 }

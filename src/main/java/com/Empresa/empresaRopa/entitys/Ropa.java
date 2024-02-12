@@ -46,6 +46,8 @@ public abstract class Ropa  {
     @NonNull
     private String marca;
 
+    @NotNull(message = "inserte imagen")
+    private String imagen;
 
     @Column( nullable =  false)
     private String tiporopa;
