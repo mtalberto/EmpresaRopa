@@ -25,7 +25,7 @@ public interface RepositoryUsuarios extends JpaRepository<UsuarioEntity, Long > 
      * @return
      */
 
-    @Query("SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.email = :email")
-    Optional<UsuarioEntity> findByNombreUsuarioAndEmail(String usuario, String email);
+    @Query("SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.email = :email AND u.id =:id")
+    Optional<UsuarioEntity> findByNombreUsuarioAndEmail(String usuario, String email,long id);
 
 }
