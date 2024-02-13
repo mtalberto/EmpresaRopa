@@ -33,16 +33,16 @@ public class ControladorUsuarios {
 
     @GetMapping("/ListaUsuarios")
 
-    public List<UsuarioEntity> findAllUsuarios() {
+    public List<UsuarioEntity> findAllUsuariosSinCompras() {
 
-        return (List<UsuarioEntity>) this.repositoryUsuarios.findAll();
+        return (List<UsuarioEntity>) this.repositoryUsuarios.findByListaUsuarios();
     }
 
     //obterner usuario por nombreusuario y email
     //usar tokens
     @GetMapping("/BuscarUsuario")
-    public ResponseEntity<Optional<UsuarioDTO>> obtenerUsuarioPorNombreYEmail(@Valid @RequestParam String nombreUsuario, @RequestParam String email,@RequestParam long id) {
-        Optional<UsuarioDTO> usuarioDTO = servicioUsuarios.obtenerUsuarioPorNombreUsuarioYEmail(nombreUsuario, email,id);
+    public ResponseEntity<Optional<UsuarioDTO>> obtenerUsuarioPorNombreYEmail(@Valid @RequestParam String nombreUsuario, @RequestParam String email, @RequestParam Long id) {
+        Optional<UsuarioDTO> usuarioDTO = servicioUsuarios.buscarUsuario(nombreUsuario, email,id);
         if (usuarioDTO != null) {
             return ResponseEntity.ok(usuarioDTO);
         } else {

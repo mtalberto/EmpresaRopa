@@ -21,6 +21,7 @@ import java.util.List;
 @Table(name = "Usuarios")
 public class UsuarioEntity {
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
@@ -73,18 +74,27 @@ public class UsuarioEntity {
 
     private List<ComprasEntity> comprasUsuario;
 
+    public UsuarioEntity(long id, String primerApellido, String nombre, String segundoApellido, String email, Timestamp fechaNacimiento, String usuario) {
+        this.id = id;
+        this.primerApellido = primerApellido;
+        this.nombre = nombre;
+        this.segundoApellido = segundoApellido;
+        this.email = email;
+        this.fechaNacimiento = fechaNacimiento;
+        this.usuario = usuario;
 
+    }
 
-
-
-    /**
+/**
      * ModelMapper es una librería de mapeo de objetos que automáticamente mapea objetos
      * a otros objetos mediante convenciones de nombres o configuraciones personalizadas.
      * @param source
-    */
+
 
     public void copyDataFromEmpleado(UsuarioEntity source) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.map(source, this);
     }
+
+    */
 }

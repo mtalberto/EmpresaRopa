@@ -17,6 +17,5 @@ public class PantalonEntity extends Ropa{
 
     @NonNull
     @OneToMany(mappedBy="pantalon",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-
     private List<ComprasEntity> comprasPantalon;
 }

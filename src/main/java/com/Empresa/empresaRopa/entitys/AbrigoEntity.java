@@ -19,11 +19,12 @@ public class AbrigoEntity extends Ropa {
    
 
     @NonNull
+    @Column( nullable =  false,name = "COMPRA_ABRIGO")
     @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ComprasEntity> comprasAbrigo ;
 
     @NonNull()
-    @Column(nullable = false)
+    @Column(nullable = false,name = "LARGO")
     @NotNull(message = "el campo largo no puede estar vacio")
     private String largo;
 

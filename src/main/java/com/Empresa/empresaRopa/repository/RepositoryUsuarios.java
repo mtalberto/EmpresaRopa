@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -26,6 +27,10 @@ public interface RepositoryUsuarios extends JpaRepository<UsuarioEntity, Long > 
      */
 
     @Query("SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.email = :email AND u.id =:id")
-    Optional<UsuarioEntity> findByNombreUsuarioAndEmail(String usuario, String email,long id);
+    Optional<UsuarioEntity> findByNombreUsuarioAndEmailAndId(String usuario, String email,Long id);
+
+    @Query("SELECT new UsuarioEntity(u.id,primerApellido,u.nombre,u.segundoApellido,u.email,u.fechaNacimiento,u.usuario) From UsuarioEntity u")
+    List<UsuarioEntity> findByListaUsuarios();
+
 
 }

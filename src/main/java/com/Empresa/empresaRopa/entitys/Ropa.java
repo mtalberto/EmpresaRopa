@@ -39,28 +39,34 @@ public abstract class Ropa  {
     private String color;
     //tuve un error en postaman que se me duplicaba la fecha por que antes era fCcompraAlmacen
     // y lo cambie a fcompraAlmacen y no se me duplico
-    @Column(name = "fcompraAlmacen", nullable =  false)
+    @Column( nullable =  false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Timestamp fcompraAlmacen;
+
 
     @NonNull
     private String marca;
 
+    @Column(name = "IMAGEN")
     @NotNull(message = "inserte imagen")
     private String imagen;
 
-    @Column( nullable =  false)
+    @Column( nullable =  false,name = "TIPOROPA")
     private String tiporopa;
 
-    @NonNull
+
+    @Column( nullable =  false,name = "NOMBRE")
     @NotNull(message = "inserte nombre")
     private String nombre;
+
+    @Column( nullable =  false)
     @NotNull(message = "inserte cantidad")
     private int cantidad;
-
+    @Column( nullable =  false,name = "TELA")
     @NotNull(message = "inserte tela")
     private String tela;
 
+    @Column( nullable =  false,name = "PRECIO")
     @NotNull(message = "inserte precio")
     private int precio;
 

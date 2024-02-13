@@ -18,6 +18,7 @@ import java.util.List;
 public class CamisetaEntity extends Ropa {
 
     @NonNull
+    @Column( nullable =  false,name = "COMPRA_CAMISETA")
     @OneToMany(mappedBy="camiseta",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ComprasEntity> compraCamiseta;
 

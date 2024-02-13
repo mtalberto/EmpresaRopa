@@ -6,8 +6,9 @@ import com.Empresa.empresaRopa.repository.RepositoryCompras;
 import com.Empresa.empresaRopa.repository.RepositoryUsuarios;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
 
 /**
  * @Service
@@ -55,31 +56,70 @@ public class ServicioUsuarios {
         // usuarioEntity.setCompras(...);
 
         usuarioEntity = repositoryUsuarios.save(usuarioEntity);
-
         // Actualizar el ID en caso de que se genere automáticamente
         usuario.setId(usuarioEntity.getId());
 
-        return usuario; // Puedes necesitar convertir usuarioEntity de nuevo a UsuarioDTO si se actualizó algo durante el guardado
+        return usuario;
 
     }
 
-    public Optional<UsuarioDTO> obtenerUsuarioPorNombreUsuarioYEmail(String nombreUsuario, String email) {
-        Optional<UsuarioEntity> usuarioEntity = repositoryUsuarios.findByNombreUsuarioAndEmail(nombreUsuario, email);
+    /**
+     * buscar usuario por email,nombreusuario y id
+     * @param nombreUsuario
+     * @param email
+     * @param id
+     * @return
+     */
+
+    public Optional<UsuarioDTO> buscarUsuario(String nombreUsuario, String email, long id) {
+        Optional<UsuarioEntity> usuarioEntity = repositoryUsuarios.findByNombreUsuarioAndEmailAndId(nombreUsuario, email,id);
 
         // Convertir UsuarioEntity a UsuarioDTO si está presente
         //u es un objeto de usuarioEntity
-        return usuarioEntity.map(u -> {
-            UsuarioDTO usuarioDTO = new UsuarioDTO();
-            usuarioDTO.setNombre(u.getNombre());
-            usuarioDTO.setPrimerApellido(u.getPrimerApellido());
-            usuarioDTO.setSegundoApellido(u.getSegundoApellido());
-            usuarioDTO.setId(u.getId());
-            usuarioDTO.setNombreUsuario(u.getUsuario());
-            // Configurar otros campos...
-            usuarioDTO.setEmail(u.getEmail());
-            return usuarioDTO;
+        return usuarioEntity.map(usuario -> {
+            return datosDTO(usuario);
         });
 
 
     }
+
+    /**
+     * listamos todos los usarios menos sus listas de compra
+     * utilizamos stream() y map()
+     * solo las compras por cada usuario no la compra de todos los usuarios
+     * para transformar cada UsuarioEntity en un UsuarioDTO
+     * @return
+     */
+
+    public List<UsuarioDTO> findListaUsuariosSinCompras(){
+        List<UsuarioEntity>listaUsuarios=repositoryUsuarios.findByListaUsuarios();
+
+        List<UsuarioDTO> listUsuarios= listaUsuarios.stream().map(usuarioEntity -> {
+            return datosDTO(usuarioEntity);
+        }).collect(Collectors.toList());
+
+        return   listUsuarios;
+
+
+    }
+
+    /**
+     * codigo reutilizable para convertir data transfer objet DTO una entity
+     * reutilizable
+     * @param usuarioEntity
+     * @return
+     */
+    private  UsuarioDTO datosDTO(UsuarioEntity usuarioEntity){
+        UsuarioDTO usuario= new UsuarioDTO();
+        usuario.setId(usuarioEntity.getId());
+        usuario.setNombre(usuarioEntity.getNombre());
+        usuario.setPrimerApellido(usuarioEntity.getPrimerApellido());
+        usuario.setSegundoApellido(usuarioEntity.getSegundoApellido());
+        usuario.setNombreUsuario(usuarioEntity.getUsuario());
+        usuario.setFechaNacimiento(usuarioEntity.getFechaNacimiento());
+        usuario.setEmail(usuarioEntity.getEmail());
+        return usuario;
+
+    }
+
 }

@@ -38,7 +38,6 @@ public class ComprasEntity  {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pantalonId",nullable =  true) // Permite valores nulos
-
     private PantalonEntity pantalon;
 
     @NonNull
