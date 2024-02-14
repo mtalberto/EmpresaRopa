@@ -28,7 +28,8 @@ public interface RepositoryUsuarios extends JpaRepository<UsuarioEntity, Long > 
 
     @Query("SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.email = :email AND u.id =:id")
     Optional<UsuarioEntity> findByNombreUsuarioAndEmailAndId(String usuario, String email,Long id);
-
+// creo un nuevo constructor en usuarios para saca los datos que quiero sacar y no me de
+    //da fallo springboot
     @Query("SELECT new UsuarioEntity(u.id,primerApellido,u.nombre,u.segundoApellido,u.email,u.fechaNacimiento,u.usuario) From UsuarioEntity u")
     List<UsuarioEntity> findByListaUsuarios();
 
