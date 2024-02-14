@@ -1,47 +1,41 @@
 package com.Empresa.empresaRopa.servicios;
 
-import com.Empresa.empresaRopa.entitys.ComprasEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
-import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 public class ComprasDTO {
 
-    private long id;
-    private String talla;
+    private long idcompra;
 
-    private String color;
+    private AbrigoDTO abrigo;
 
-    private String marca;
+    private CamisetaDTO camiseta;
 
-    private String tiporopa;
+    private FaldaDTO falda;
 
-    private int precio;
+    private PantalonDTO pantalon;
 
-    private int cantidad;
-
-    private String primerApellido;
-    private String segundoApellido;
-    private String email;
+    private UsuarioDTO usuario;
 
     private Timestamp fechaCompra;
 
-    public ComprasDTO(long id, String talla, String color, String marca, String tiporopa, int precio, int cantidad, String primerApellido, String segundoApellido, String email, Timestamp fechaCompra) {
-        this.id = id;
-        this.talla = talla;
-        this.color = color;
-        this.marca = marca;
-        this.tiporopa = tiporopa;
-        this.precio = precio;
-        this.cantidad = cantidad;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.email = email;
+    private Integer cantidad;
+
+
+    public ComprasDTO(long idcompra, AbrigoDTO abrigo, CamisetaDTO camiseta, com.Empresa.empresaRopa.servicios.FaldaDTO falda, PantalonDTO pantalon, UsuarioDTO usuario, Timestamp fechaCompra, Integer cantidad) {
+        this.idcompra = idcompra;
+        this.abrigo = abrigo;
+        this.camiseta = camiseta;
+        this.falda = falda;
+        this.pantalon = pantalon;
+        this.usuario = usuario;
         this.fechaCompra = fechaCompra;
+        this.cantidad = cantidad;
     }
 }

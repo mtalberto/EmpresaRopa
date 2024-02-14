@@ -2,9 +2,14 @@ package com.Empresa.empresaRopa.servicios;
 
 
 import com.Empresa.empresaRopa.entitys.*;
-import com.Empresa.empresaRopa.repository.*;
+import com.Empresa.empresaRopa.repository.RepositorCamiseta;
+import com.Empresa.empresaRopa.repository.RepositoryAbrigo;
+import com.Empresa.empresaRopa.repository.RepositoryFalda;
+import com.Empresa.empresaRopa.repository.RepositoryPantalon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Service
@@ -24,10 +29,10 @@ public class ServicioRopa {
     private final RepositorCamiseta camisetaRepository;
 
 
-
     /**
      * si tu clase tiene un único constructor, puedes omitir
      * la anotación @Autowired y Spring automáticamente inyectará las dependencias
+     *
      * @param pantalonRepository
      */
 
@@ -40,28 +45,28 @@ public class ServicioRopa {
 
     }
 
-    public PantalonEntity guardarPantalon(PantalonEntity pantalon) {
 
-        return pantalonRepository.save(pantalon);
+    /**
+     * solo me interesa mostrar la lista en la vista usuario
+     * donde saldra la lista de sus compras para no cargar la bd
+     * guardo la ropa sin lista de compras
+     *
+     * @param ropa
+     * @return
+     */
+    public Ropa guardarRopa(Ropa ropa) {
+        switch (ropa.getTiporopa().toLowerCase()) {
+            case "abrigo":
+                return abrigoRepository.save((AbrigoEntity) ropa);
+            case "camiseta":
+                return camisetaRepository.save((CamisetaEntity) ropa);
+            case "falda":
+                return faldaRepository.save((FaldaEntity) ropa);
+            case "pantalon":
+                return pantalonRepository.save((PantalonEntity) ropa);
+            default:
+                throw new IllegalArgumentException("No me has indicado adecuadamente el tipo de ropa " + ropa.getTiporopa());
+        }
+
     }
-
-    public AbrigoEntity guardarAbrigo(AbrigoEntity abrigo){
-
-        return abrigoRepository.save(abrigo);
-    }
-
-    public FaldaEntity guardarFalda(FaldaEntity falda){
-
-        return faldaRepository.save(falda);
-    }
-
-    public CamisetaEntity guardaCamiseta(CamisetaEntity camiseta){
-
-        return camisetaRepository.save(camiseta);
-    }
-
-
-
-
-
 }

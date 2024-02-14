@@ -28,6 +28,7 @@ public class FaldaDTO {
 
     private String nombre;
 
+
     private int cantidad;
 
     private String tela;
