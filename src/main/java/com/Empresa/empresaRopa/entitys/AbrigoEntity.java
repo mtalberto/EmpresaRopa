@@ -19,7 +19,7 @@ public class AbrigoEntity extends Ropa {
    
 
     @NonNull
-    @Column( nullable =  false,name = "COMPRA_ABRIGO")
+    @Column( nullable =  false)
     @OneToMany(mappedBy="abrigo",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ComprasEntity> comprasAbrigo ;
 

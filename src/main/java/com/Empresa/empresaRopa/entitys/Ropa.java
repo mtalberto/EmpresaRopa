@@ -47,7 +47,7 @@ public abstract class Ropa  {
     @NonNull
     private String marca;
 
-    @Column(name = "IMAGEN")
+
     @NotNull(message = "inserte imagen")
     private String imagen;
 
