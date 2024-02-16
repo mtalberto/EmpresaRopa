@@ -1,7 +1,7 @@
 package com.Empresa.empresaRopa.entitys;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,14 +1,13 @@
 package com.Empresa.empresaRopa.entitys;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
+
 import lombok.*;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 

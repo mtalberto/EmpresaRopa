@@ -43,6 +43,7 @@ public class ControladorRopa {
         return (List<FaldaEntity>) this.repositoryFalda.findAll();
     }
 
+    @SuppressWarnings("null")
     @PostMapping("/AñadirFaldas")
     @ResponseBody
     public Ropa addOneRopa(@RequestBody FaldaEntity faldaEntity) {
@@ -57,6 +58,7 @@ public class ControladorRopa {
         return this.repositoryAbrigo.findAll();
     }
 
+    @SuppressWarnings("null")
     @PostMapping("/AñadirAbrigo")
     @ResponseBody
     public Ropa addOneRopa(@RequestBody AbrigoEntity abrigoEntity) {
@@ -71,6 +73,7 @@ public class ControladorRopa {
         return  this.repositorCamiseta.findAll();
     }
 
+    @SuppressWarnings("null")
     @PostMapping("/AñadirCamisetas")
     @ResponseBody
     public Ropa addOneRopa(@RequestBody CamisetaEntity camisetaEntity) {
@@ -87,6 +90,7 @@ public class ControladorRopa {
         return this.repositoryPantalon.findAll();
     }
 
+    @SuppressWarnings("null")
     @PostMapping("/AñadirPantalones")
     @ResponseBody
     public Ropa addOneRopa(@RequestBody PantalonEntity pantalonEntity) {

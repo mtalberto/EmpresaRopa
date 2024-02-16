@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.modelmapper.ModelMapper;
 
 import java.sql.Timestamp;
 import java.util.List;

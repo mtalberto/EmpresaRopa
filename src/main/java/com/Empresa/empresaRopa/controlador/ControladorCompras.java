@@ -3,10 +3,10 @@ package com.Empresa.empresaRopa.controlador;
 import com.Empresa.empresaRopa.entitys.*;
 import com.Empresa.empresaRopa.repository.*;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 
 //Arquitectura expone los endpoints(rutas)
@@ -67,6 +67,7 @@ public class ControladorCompras {
      * @return
      * @throws Throwable
      */
+    @SuppressWarnings("null")
     @ResponseBody
     @PostMapping("/Compras/{idUsuario}/{idRopa}/{tiporopa}")
     public ComprasEntity addOneCompra(@RequestBody ComprasEntity venta, @PathVariable Long idUsuario,
