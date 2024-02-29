@@ -10,7 +10,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +19,7 @@ import java.util.Optional;
 @RestController
 public class ControladorUsuarios {
 
-    private final ModelAndView mv= new ModelAndView();
+  
     private final ServicioUsuarios servicioUsuarios;
 
     private final RepositoryUsuarios repositoryUsuarios;
@@ -63,6 +63,7 @@ public class ControladorUsuarios {
 
 
 
+    @SuppressWarnings("null")
     @DeleteMapping("/Usuario/{idUser}")
     @Transactional
     public ResponseEntity<Boolean> deleteUsuario(@PathVariable Long id){

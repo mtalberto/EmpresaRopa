@@ -6,7 +6,6 @@ import com.Empresa.empresaRopa.repository.RepositorCamiseta;
 import com.Empresa.empresaRopa.repository.RepositoryAbrigo;
 import com.Empresa.empresaRopa.repository.RepositoryFalda;
 import com.Empresa.empresaRopa.repository.RepositoryPantalon;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class ServicioRopa {
      * @param pantalonRepository
      */
 
-    @Autowired
+   
     public ServicioRopa(RepositoryPantalon pantalonRepository, RepositoryAbrigo abrigoRepository, RepositoryFalda faldaRepository, RepositorCamiseta camisetaRepository) {
         this.pantalonRepository = pantalonRepository;
         this.abrigoRepository = abrigoRepository;

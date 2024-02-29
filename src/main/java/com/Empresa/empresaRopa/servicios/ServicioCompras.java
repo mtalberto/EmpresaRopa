@@ -20,6 +20,7 @@ public class ServicioCompras {
         this.repositoryCompras = repositoryCompras;
     }
 
+    @SuppressWarnings("null")
     public ComprasEntity guardarVentas(ComprasEntity ventas){
         return this.repositoryCompras.save(ventas);
     }

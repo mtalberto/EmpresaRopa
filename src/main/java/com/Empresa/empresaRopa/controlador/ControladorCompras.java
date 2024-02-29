@@ -3,7 +3,7 @@ package com.Empresa.empresaRopa.controlador;
 import com.Empresa.empresaRopa.entitys.*;
 import com.Empresa.empresaRopa.repository.*;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+
 import org.springframework.web.bind.annotation.*;
 
 
@@ -67,6 +67,7 @@ public class ControladorCompras {
      * @return
      * @throws Throwable
      */
+    @SuppressWarnings("null")
     @ResponseBody
     @Transactional
     @PostMapping("/Compras/{idUsuario}/{idRopa}/{tiporopa}")
