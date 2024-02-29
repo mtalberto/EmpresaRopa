@@ -6,7 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 
 //Arquitectura expone los endpoints(rutas)
@@ -68,6 +68,7 @@ public class ControladorCompras {
      * @throws Throwable
      */
     @ResponseBody
+    @Transactional
     @PostMapping("/Compras/{idUsuario}/{idRopa}/{tiporopa}")
     public ComprasEntity addOneCompra(@RequestBody ComprasEntity venta, @PathVariable Long idUsuario,
                                       @PathVariable Long idRopa,

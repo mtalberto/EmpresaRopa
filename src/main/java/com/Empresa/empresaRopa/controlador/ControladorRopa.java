@@ -5,6 +5,9 @@ import com.Empresa.empresaRopa.repository.RepositorCamiseta;
 import com.Empresa.empresaRopa.repository.RepositoryAbrigo;
 import com.Empresa.empresaRopa.repository.RepositoryFalda;
 import com.Empresa.empresaRopa.repository.RepositoryPantalon;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,6 +41,7 @@ public class ControladorRopa {
 
     @GetMapping("/ListaFaldas")
     @ResponseBody
+    @Transactional
     public List<FaldaEntity> findAllFaldas() {
 
         return (List<FaldaEntity>) this.repositoryFalda.findAll();
@@ -45,6 +49,7 @@ public class ControladorRopa {
 
     @PostMapping("/AñadirFaldas")
     @ResponseBody
+    @Transactional
     public Ropa addOneRopa(@RequestBody FaldaEntity faldaEntity) {
         
         return this.repositoryFalda.save(faldaEntity);
@@ -52,6 +57,7 @@ public class ControladorRopa {
 
     @GetMapping("/ListaAbrigos")
     @ResponseBody
+    @Transactional
     public Iterable<AbrigoEntity> findAllAbrigos() {
 
         return this.repositoryAbrigo.findAll();
@@ -59,6 +65,7 @@ public class ControladorRopa {
 
     @PostMapping("/AñadirAbrigo")
     @ResponseBody
+    @Transactional
     public Ropa addOneRopa(@RequestBody AbrigoEntity abrigoEntity) {
         System.out.println("Recibida abrigo: " + abrigoEntity);
         return  this.repositoryAbrigo.save(abrigoEntity);
@@ -66,6 +73,7 @@ public class ControladorRopa {
 
     @GetMapping("/ListaCamisetas")
     @ResponseBody
+    @Transactional
     public Iterable<CamisetaEntity> findAllCamisetas() {
 
         return  this.repositorCamiseta.findAll();
@@ -73,6 +81,7 @@ public class ControladorRopa {
 
     @PostMapping("/AñadirCamisetas")
     @ResponseBody
+    @Transactional
     public Ropa addOneRopa(@RequestBody CamisetaEntity camisetaEntity) {
 
         return  this.repositorCamiseta.save(camisetaEntity);

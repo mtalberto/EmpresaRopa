@@ -5,6 +5,8 @@ import com.Empresa.empresaRopa.entitys.UsuarioEntity;
 import com.Empresa.empresaRopa.repository.RepositoryUsuarios;
 import com.Empresa.empresaRopa.servicios.ServicioUsuarios;
 import com.Empresa.empresaRopa.servicios.UsuarioDTO;
+
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +34,7 @@ public class ControladorUsuarios {
 
 
     @GetMapping("/ListaUsuarios")
-
+    @Transactional
     public List<UsuarioEntity> findAllUsuarios() {
 
         return (List<UsuarioEntity>) this.repositoryUsuarios.findAll();
@@ -41,6 +43,7 @@ public class ControladorUsuarios {
     //obterner usuario por nombreusuario y email
     //usar tokens
     @GetMapping("/BuscarUsuario")
+    @Transactional
     public ResponseEntity<Optional<UsuarioDTO>> obtenerUsuarioPorNombreYEmail(@Valid @RequestParam String nombreUsuario, @RequestParam String email,@RequestParam long id) {
         Optional<UsuarioDTO> usuarioDTO = servicioUsuarios.buscarUsuario(nombreUsuario, email,id);
         if (usuarioDTO != null) {
@@ -51,6 +54,7 @@ public class ControladorUsuarios {
     }
 
     @PostMapping("/NuevoUsuario") // Define la ruta específica para crear un nuevo usuario
+    @Transactional
     public ResponseEntity<UsuarioDTO> crearUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
         UsuarioDTO usuarioCreado = servicioUsuarios.crearUsuario(usuarioDTO);
         return ResponseEntity.ok(usuarioCreado); // Devuelve el usuario creado con un estado HTTP 200 OK
@@ -60,7 +64,7 @@ public class ControladorUsuarios {
 
 
     @DeleteMapping("/Usuario/{idUser}")
-
+    @Transactional
     public ResponseEntity<Boolean> deleteUsuario(@PathVariable Long id){
         Optional<UsuarioEntity> usuario = repositoryUsuarios.findById(id);
         if (usuario.isEmpty()) {
